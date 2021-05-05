@@ -1,0 +1,4093 @@
+{
+  "nodes": [
+    {
+      "type": "command",
+      "name": "kick",
+      "guid": "f28e2389-6ca9-4228-823a-28bf782deb94",
+      "outputs": [
+        {
+          "label": "responses",
+          "connections": [
+            "03ee5ca6-e2f7-4141-bd40-265db3fd395e"
+          ]
+        }
+      ],
+      "x": 2,
+      "y": 272
+    },
+    {
+      "type": "response",
+      "name": "getUser",
+      "guid": "97e3b7aa-7e26-4664-8f41-99aba34b7c3c",
+      "reactionFields": [],
+      "embedfields": [],
+      "outputs": [
+        {
+          "label": "next response",
+          "connections": [
+            "c27f32f1-4d8f-413c-aa0f-bdde4eacf257"
+          ]
+        }
+      ],
+      "inputs": [
+        {
+          "label": "trigger",
+          "id": "03ee5ca6-e2f7-4141-bd40-265db3fd395e"
+        }
+      ],
+      "x": 312,
+      "y": 270,
+      "rtype": "Variable",
+      "rsubtype": "Get Mentioned User",
+      "formdata": [
+        "kickuser",
+        "User",
+        "temp"
+      ],
+      "formnames": [
+        "varname",
+        "vartype",
+        "saveVarType"
+      ]
+    },
+    {
+      "type": "response",
+      "name": "kickReason",
+      "guid": "c27f32f1-4d8f-413c-aa0f-bdde4eacf257",
+      "reactionFields": [],
+      "embedfields": [],
+      "saveToVariable": "kickreason",
+      "saveToVariableType": "temp",
+      "outputs": [
+        {
+          "label": "next response",
+          "connections": [
+            "e5b6ff57-97c7-41fa-a49f-8cf7709f954f"
+          ]
+        }
+      ],
+      "inputs": [
+        {
+          "label": "trigger",
+          "id": "97e3b7aa-7e26-4664-8f41-99aba34b7c3c"
+        }
+      ],
+      "x": 465,
+      "y": 270,
+      "rtype": "Variable",
+      "rsubtype": "Store Value in Variable",
+      "formdata": [
+        "kickreason",
+        "Text",
+        "temp",
+        "2+"
+      ],
+      "formnames": [
+        "varname",
+        "vartype",
+        "saveVarType",
+        "param"
+      ]
+    },
+    {
+      "type": "response",
+      "name": "kick.user",
+      "guid": "7f924702-cf94-4135-8d1f-f68b0d9655e8",
+      "reactionFields": [],
+      "embedfields": [],
+      "outputs": [
+        {
+          "label": "next response",
+          "connections": []
+        }
+      ],
+      "inputs": [
+        {
+          "label": "trigger",
+          "id": "e5b6ff57-97c7-41fa-a49f-8cf7709f954f"
+        }
+      ],
+      "x": 769,
+      "y": 265,
+      "rtype": "User Action",
+      "rsubtype": "Kick User",
+      "formdata": [
+        "${tempVars.kickuser.id}",
+        "${tempVars.kick.reason}"
+      ],
+      "formnames": [
+        "user",
+        "reason"
+      ]
+    },
+    {
+      "type": "response",
+      "name": "kickmsg",
+      "guid": "e5b6ff57-97c7-41fa-a49f-8cf7709f954f",
+      "reactionFields": [],
+      "embedfields": [],
+      "outputs": [
+        {
+          "label": "next response",
+          "connections": [
+            "7f924702-cf94-4135-8d1f-f68b0d9655e8"
+          ]
+        }
+      ],
+      "inputs": [
+        {
+          "label": "trigger",
+          "id": "c27f32f1-4d8f-413c-aa0f-bdde4eacf257"
+        }
+      ],
+      "x": 618,
+      "y": 267,
+      "rtype": "Message",
+      "rsubtype": "Send Embed",
+      "formdata": [
+        "807333306970013766",
+        "FF0000",
+        "Kicked out!",
+        "",
+        "",
+        "",
+        "",
+        "User: <@${tempVars.kickuser.id}>\nReason: ${tempVars.kickreason}\nModerator: <@${dbsVars.CommandAuthor.id}>",
+        "${tempVars.kickuser.user.avatarURL}",
+        "",
+        "KSA Bot | made by _927#5562",
+        "BOOL_TRUE@@",
+        "",
+        "temp"
+      ],
+      "formnames": [
+        "channelname",
+        "color",
+        "title",
+        "url",
+        "authorname",
+        "authorimageurl",
+        "authorlink",
+        "description",
+        "thumbnail",
+        "image",
+        "footer",
+        "timestamp",
+        "saveToVariable",
+        "saveToVariableType"
+      ]
+    },
+    {
+      "type": "command",
+      "name": "ban",
+      "guid": "ef084754-2d3c-4263-acf7-adb940dfdf6f",
+      "outputs": [
+        {
+          "label": "responses",
+          "connections": [
+            "ba03f132-bfa8-41a1-afcc-e44a5bbf1372"
+          ]
+        }
+      ],
+      "x": 0,
+      "y": 109
+    },
+    {
+      "type": "response",
+      "name": "getUser.ban",
+      "guid": "9a8cd208-d65c-4163-a565-cc7add469f95",
+      "reactionFields": [],
+      "embedfields": [],
+      "outputs": [
+        {
+          "label": "next response",
+          "connections": [
+            "3ae432c2-6812-49dd-b9a2-d2b93e13aae1"
+          ]
+        }
+      ],
+      "inputs": [
+        {
+          "label": "trigger",
+          "id": "ba03f132-bfa8-41a1-afcc-e44a5bbf1372"
+        }
+      ],
+      "x": 310,
+      "y": 106,
+      "rtype": "Variable",
+      "rsubtype": "Get Mentioned User",
+      "formdata": [
+        "banuser",
+        "User",
+        "temp"
+      ],
+      "formnames": [
+        "varname",
+        "vartype",
+        "saveVarType"
+      ]
+    },
+    {
+      "type": "response",
+      "name": "banUser",
+      "guid": "434443a5-a7e0-4f9e-ae5b-08566ad6c698",
+      "reactionFields": [],
+      "embedfields": [],
+      "outputs": [
+        {
+          "label": "next response",
+          "connections": []
+        }
+      ],
+      "inputs": [
+        {
+          "label": "trigger",
+          "id": "27da83c5-971b-45af-8d3a-ebf762ceb4bf"
+        }
+      ],
+      "x": 920,
+      "y": 99,
+      "rtype": "User Action",
+      "rsubtype": "Ban User",
+      "formdata": [
+        "${tempVars.banuser.id}",
+        "${tempVars.banreason}",
+        "${tempVars.bantime}"
+      ],
+      "formnames": [
+        "user",
+        "reason",
+        "days"
+      ]
+    },
+    {
+      "type": "response",
+      "name": "BanMessage",
+      "guid": "27da83c5-971b-45af-8d3a-ebf762ceb4bf",
+      "reactionFields": [],
+      "embedfields": [],
+      "outputs": [
+        {
+          "label": "next response",
+          "connections": [
+            "434443a5-a7e0-4f9e-ae5b-08566ad6c698"
+          ]
+        }
+      ],
+      "inputs": [
+        {
+          "label": "trigger",
+          "id": "471a4942-27c5-4917-bc66-53a6f9b27cc9"
+        }
+      ],
+      "x": 768,
+      "y": 99,
+      "rtype": "Message",
+      "rsubtype": "Send Embed",
+      "formdata": [
+        "807333306970013766",
+        "FF0000",
+        "Banned!",
+        "",
+        "",
+        "",
+        "",
+        "User: <@${tempVars.banuser.id}>\nTime: ${tempVars.bantime} Days\nReason: ${tempVars.banreason}\nModerator:<@${dbsVars.CommandAuthor.id}>",
+        "${tempVars.banuser.user.avatarURL}",
+        "",
+        "KSA Bot | made by _927#5562",
+        "BOOL_TRUE@@",
+        "",
+        "temp"
+      ],
+      "formnames": [
+        "channelname",
+        "color",
+        "title",
+        "url",
+        "authorname",
+        "authorimageurl",
+        "authorlink",
+        "description",
+        "thumbnail",
+        "image",
+        "footer",
+        "timestamp",
+        "saveToVariable",
+        "saveToVariableType"
+      ]
+    },
+    {
+      "type": "command",
+      "name": "clear",
+      "guid": "a6614e62-2534-4b22-a7ff-a1b6d18929ba",
+      "outputs": [
+        {
+          "label": "responses",
+          "connections": [
+            "48fa5856-c93b-4e28-a3f3-cac442434bc3"
+          ]
+        }
+      ],
+      "x": 4,
+      "y": 429
+    },
+    {
+      "type": "response",
+      "name": "clearNumber",
+      "guid": "475af40e-da15-4cc8-9a17-47427903b333",
+      "reactionFields": [],
+      "embedfields": [],
+      "saveToVariable": "clearnumber",
+      "saveToVariableType": "temp",
+      "outputs": [
+        {
+          "label": "next response",
+          "connections": [
+            "c748bca2-ee66-4ca7-b54e-2d2c8af8aac1"
+          ]
+        }
+      ],
+      "inputs": [
+        {
+          "label": "trigger",
+          "id": "48fa5856-c93b-4e28-a3f3-cac442434bc3"
+        }
+      ],
+      "x": 317,
+      "y": 424,
+      "rtype": "Variable",
+      "rsubtype": "Store Value in Variable",
+      "formdata": [
+        "clearnumber",
+        "Number",
+        "temp",
+        "1"
+      ],
+      "formnames": [
+        "varname",
+        "vartype",
+        "saveVarType",
+        "param"
+      ]
+    },
+    {
+      "type": "response",
+      "name": "clearNow",
+      "guid": "c748bca2-ee66-4ca7-b54e-2d2c8af8aac1",
+      "reactionFields": [],
+      "embedfields": [],
+      "outputs": [
+        {
+          "label": "next response",
+          "connections": [
+            "bac86232-c0db-413c-8b54-4ef7ae5a4469"
+          ]
+        }
+      ],
+      "inputs": [
+        {
+          "label": "trigger",
+          "id": "475af40e-da15-4cc8-9a17-47427903b333"
+        }
+      ],
+      "x": 472,
+      "y": 425,
+      "rtype": "Channel Action",
+      "rsubtype": "Delete All Messages",
+      "formdata": [
+        "${dbsVars.CommandChannel.id}",
+        "${tempVars.clearnumber}"
+      ],
+      "formnames": [
+        "channelname",
+        "msgcount"
+      ]
+    },
+    {
+      "type": "response",
+      "name": "clearLog",
+      "guid": "bac86232-c0db-413c-8b54-4ef7ae5a4469",
+      "reactionFields": [],
+      "embedfields": [],
+      "outputs": [
+        {
+          "label": "next response",
+          "connections": []
+        }
+      ],
+      "inputs": [
+        {
+          "label": "trigger",
+          "id": "c748bca2-ee66-4ca7-b54e-2d2c8af8aac1"
+        }
+      ],
+      "x": 628,
+      "y": 425,
+      "rtype": "Message",
+      "rsubtype": "Send Embed",
+      "formdata": [
+        "${dbsVars.CommandChannel.id}",
+        "4DFF00",
+        "Erfolgreich!",
+        "",
+        "",
+        "",
+        "",
+        "`${tempVars.clearnumber}`  **Nachrichten wurden entfernt**",
+        "https://cdn.discordapp.com/emojis/592473629787422723.gif?v=1&size=40",
+        "",
+        "KSA Bot | made by _927#5562",
+        "false",
+        "",
+        "temp"
+      ],
+      "formnames": [
+        "channelname",
+        "color",
+        "title",
+        "url",
+        "authorname",
+        "authorimageurl",
+        "authorlink",
+        "description",
+        "thumbnail",
+        "image",
+        "footer",
+        "timestamp",
+        "saveToVariable",
+        "saveToVariableType"
+      ]
+    },
+    {
+      "type": "response",
+      "name": "getBanTime",
+      "guid": "3ae432c2-6812-49dd-b9a2-d2b93e13aae1",
+      "reactionFields": [],
+      "embedfields": [],
+      "saveToVariable": "bantime",
+      "saveToVariableType": "temp",
+      "outputs": [
+        {
+          "label": "next response",
+          "connections": [
+            "471a4942-27c5-4917-bc66-53a6f9b27cc9"
+          ]
+        }
+      ],
+      "inputs": [
+        {
+          "label": "trigger",
+          "id": "9a8cd208-d65c-4163-a565-cc7add469f95"
+        }
+      ],
+      "x": 463,
+      "y": 104,
+      "rtype": "Variable",
+      "rsubtype": "Store Value in Variable",
+      "formdata": [
+        "bantime",
+        "Number",
+        "temp",
+        "2"
+      ],
+      "formnames": [
+        "varname",
+        "vartype",
+        "saveVarType",
+        "param"
+      ]
+    },
+    {
+      "type": "response",
+      "name": "banReason",
+      "guid": "471a4942-27c5-4917-bc66-53a6f9b27cc9",
+      "reactionFields": [],
+      "embedfields": [],
+      "saveToVariable": "banreason",
+      "saveToVariableType": "temp",
+      "outputs": [
+        {
+          "label": "next response",
+          "connections": [
+            "27da83c5-971b-45af-8d3a-ebf762ceb4bf"
+          ]
+        }
+      ],
+      "inputs": [
+        {
+          "label": "trigger",
+          "id": "3ae432c2-6812-49dd-b9a2-d2b93e13aae1"
+        }
+      ],
+      "x": 615,
+      "y": 101,
+      "rtype": "Variable",
+      "rsubtype": "Store Value in Variable",
+      "formdata": [
+        "banreason",
+        "Text",
+        "temp",
+        "3+"
+      ],
+      "formnames": [
+        "varname",
+        "vartype",
+        "saveVarType",
+        "param"
+      ]
+    },
+    {
+      "type": "command",
+      "name": "warn",
+      "guid": "77259ae7-10c3-4567-a4df-38c0da778d52",
+      "outputs": [
+        {
+          "label": "responses",
+          "connections": [
+            "db16b6f2-2924-4ddd-acf7-0d4b62b7a6ae"
+          ]
+        }
+      ],
+      "x": 8,
+      "y": 881
+    },
+    {
+      "type": "command",
+      "name": "report",
+      "guid": "d3502fb6-c4dd-4201-abdb-908285710ccd",
+      "outputs": [
+        {
+          "label": "responses",
+          "connections": [
+            "207d64e4-223b-4e85-b443-ccc9827238ad"
+          ]
+        }
+      ],
+      "x": 6,
+      "y": 586
+    },
+    {
+      "type": "response",
+      "name": "getUser.report",
+      "guid": "207d64e4-223b-4e85-b443-ccc9827238ad",
+      "reactionFields": [],
+      "embedfields": [],
+      "outputs": [
+        {
+          "label": "next response",
+          "connections": [
+            "55f701d9-882b-47fd-9c27-a4a5c2d51e2e"
+          ]
+        }
+      ],
+      "inputs": [
+        {
+          "label": "trigger",
+          "id": "d3502fb6-c4dd-4201-abdb-908285710ccd"
+        }
+      ],
+      "x": 320,
+      "y": 576,
+      "rtype": "Variable",
+      "rsubtype": "Get Mentioned User",
+      "formdata": [
+        "reportuser",
+        "User",
+        "temp"
+      ],
+      "formnames": [
+        "varname",
+        "vartype",
+        "saveVarType"
+      ]
+    },
+    {
+      "type": "response",
+      "name": "reportReason",
+      "guid": "55f701d9-882b-47fd-9c27-a4a5c2d51e2e",
+      "reactionFields": [],
+      "embedfields": [],
+      "saveToVariable": "reportreason",
+      "saveToVariableType": "temp",
+      "outputs": [
+        {
+          "label": "next response",
+          "connections": [
+            "402bf1c2-bcf3-40db-9852-fac74e496cd6"
+          ]
+        }
+      ],
+      "inputs": [
+        {
+          "label": "trigger",
+          "id": "207d64e4-223b-4e85-b443-ccc9827238ad"
+        }
+      ],
+      "x": 475,
+      "y": 575,
+      "rtype": "Variable",
+      "rsubtype": "Store Value in Variable",
+      "formdata": [
+        "reportreason",
+        "Text",
+        "temp",
+        "2+"
+      ],
+      "formnames": [
+        "varname",
+        "vartype",
+        "saveVarType",
+        "param"
+      ]
+    },
+    {
+      "type": "response",
+      "name": "reportLogInfo",
+      "guid": "402bf1c2-bcf3-40db-9852-fac74e496cd6",
+      "reactionFields": [],
+      "embedfields": [],
+      "outputs": [
+        {
+          "label": "next response",
+          "connections": [
+            "a5edc16e-6c84-4f92-86d2-fada6fbffc48"
+          ]
+        }
+      ],
+      "inputs": [
+        {
+          "label": "trigger",
+          "id": "55f701d9-882b-47fd-9c27-a4a5c2d51e2e"
+        }
+      ],
+      "x": 631,
+      "y": 576,
+      "rtype": "Message",
+      "rsubtype": "Send Embed",
+      "formdata": [
+        "807388267388993559",
+        "FF0000",
+        "Report",
+        "",
+        "",
+        "",
+        "",
+        "Report von: <@${dbsVars.CommandAuthor.id}>\nReport für: <@${tempVars.reportuser.id}>\nGründ des Reports: ${tempVars.reportreason}",
+        "https://cdn.discordapp.com/emojis/493136361797451798.gif?v=1&size=40",
+        "",
+        "KSA Bot | made by _927#5562",
+        "BOOL_TRUE@@",
+        "",
+        "temp"
+      ],
+      "formnames": [
+        "channelname",
+        "color",
+        "title",
+        "url",
+        "authorname",
+        "authorimageurl",
+        "authorlink",
+        "description",
+        "thumbnail",
+        "image",
+        "footer",
+        "timestamp",
+        "saveToVariable",
+        "saveToVariableType"
+      ]
+    },
+    {
+      "type": "response",
+      "name": "reportInfoUser",
+      "guid": "a5edc16e-6c84-4f92-86d2-fada6fbffc48",
+      "reactionFields": [],
+      "embedfields": [],
+      "outputs": [
+        {
+          "label": "next response",
+          "connections": []
+        }
+      ],
+      "inputs": [
+        {
+          "label": "trigger",
+          "id": "402bf1c2-bcf3-40db-9852-fac74e496cd6"
+        }
+      ],
+      "x": 785,
+      "y": 576,
+      "rtype": "Message",
+      "rsubtype": "Send Embed",
+      "formdata": [
+        "${dbsVars.CommandChannel.id}",
+        "4DFF00",
+        "Erfolgreich!",
+        "",
+        "",
+        "",
+        "",
+        "Du hast <@${tempVars.reportuser.id}>\nfür \"${tempVars.reportreason}\" reportet!",
+        "https://cdn.discordapp.com/emojis/512903857270161408.gif?v=1&size=40",
+        "",
+        "KSA Bot | made by _927#5562",
+        "false",
+        "",
+        "temp"
+      ],
+      "formnames": [
+        "channelname",
+        "color",
+        "title",
+        "url",
+        "authorname",
+        "authorimageurl",
+        "authorlink",
+        "description",
+        "thumbnail",
+        "image",
+        "footer",
+        "timestamp",
+        "saveToVariable",
+        "saveToVariableType"
+      ]
+    },
+    {
+      "type": "response",
+      "name": "getUser.warn",
+      "guid": "9aa28d53-73bb-4981-90bd-d875cc39d31d",
+      "reactionFields": [],
+      "embedfields": [],
+      "outputs": [
+        {
+          "label": "next response",
+          "connections": [
+            "b90e9bd5-23b1-4f9e-8f62-9cb32d07f85e"
+          ]
+        }
+      ],
+      "inputs": [
+        {
+          "label": "trigger",
+          "id": "db16b6f2-2924-4ddd-acf7-0d4b62b7a6ae"
+        }
+      ],
+      "x": 321,
+      "y": 880,
+      "rtype": "Variable",
+      "rsubtype": "Get Mentioned User",
+      "formdata": [
+        "warnuser",
+        "User",
+        "temp"
+      ],
+      "formnames": [
+        "varname",
+        "vartype",
+        "saveVarType"
+      ]
+    },
+    {
+      "type": "response",
+      "name": "getWarnReason",
+      "guid": "b90e9bd5-23b1-4f9e-8f62-9cb32d07f85e",
+      "reactionFields": [],
+      "embedfields": [],
+      "saveToVariable": "warnreason",
+      "saveToVariableType": "temp",
+      "outputs": [
+        {
+          "label": "next response",
+          "connections": [
+            "d35cd777-1124-4714-8298-26b89865a148"
+          ]
+        }
+      ],
+      "inputs": [
+        {
+          "label": "trigger",
+          "id": "9aa28d53-73bb-4981-90bd-d875cc39d31d"
+        }
+      ],
+      "x": 476,
+      "y": 859,
+      "rtype": "Variable",
+      "rsubtype": "Store Value in Variable",
+      "formdata": [
+        "warnreason",
+        "Text",
+        "temp",
+        "2+"
+      ],
+      "formnames": [
+        "varname",
+        "vartype",
+        "saveVarType",
+        "param"
+      ]
+    },
+    {
+      "type": "response",
+      "name": "warnLogs",
+      "guid": "d35cd777-1124-4714-8298-26b89865a148",
+      "reactionFields": [],
+      "embedfields": [],
+      "outputs": [
+        {
+          "label": "next response",
+          "connections": [
+            "a9c7ff67-9913-4f93-9735-5512d9691917"
+          ]
+        }
+      ],
+      "inputs": [
+        {
+          "label": "trigger",
+          "id": "b90e9bd5-23b1-4f9e-8f62-9cb32d07f85e"
+        }
+      ],
+      "x": 628,
+      "y": 873,
+      "rtype": "User Data",
+      "rsubtype": "Edit User Data",
+      "formdata": [
+        "${tempVars.warnuser.id}",
+        "warns",
+        "+",
+        "1"
+      ],
+      "formnames": [
+        "user",
+        "field",
+        "oper",
+        "value"
+      ]
+    },
+    {
+      "type": "response",
+      "name": "warnLogChannel",
+      "guid": "a9c7ff67-9913-4f93-9735-5512d9691917",
+      "reactionFields": [],
+      "embedfields": [],
+      "outputs": [
+        {
+          "label": "next response",
+          "connections": [
+            "273253cb-0249-498b-98e1-048b91944de8"
+          ]
+        }
+      ],
+      "inputs": [
+        {
+          "label": "trigger",
+          "id": "d35cd777-1124-4714-8298-26b89865a148"
+        }
+      ],
+      "x": 784,
+      "y": 856,
+      "rtype": "Message",
+      "rsubtype": "Send Embed",
+      "formdata": [
+        "807333306970013766",
+        "FFF700",
+        "Warnung!",
+        "",
+        "",
+        "",
+        "",
+        "User: <@${tempVars.warnuser.id}>\nReason: ${tempVars.warnreason}\nModerator: <@${dbsVars.CommandAuthor.id}>",
+        "${tempVars.warnuser.user.avatarURL}",
+        "",
+        "KSA Bot | made by _927#5562",
+        "false",
+        "",
+        "temp"
+      ],
+      "formnames": [
+        "channelname",
+        "color",
+        "title",
+        "url",
+        "authorname",
+        "authorimageurl",
+        "authorlink",
+        "description",
+        "thumbnail",
+        "image",
+        "footer",
+        "timestamp",
+        "saveToVariable",
+        "saveToVariableType"
+      ]
+    },
+    {
+      "type": "response",
+      "name": "warnInfoUser",
+      "guid": "273253cb-0249-498b-98e1-048b91944de8",
+      "reactionFields": [],
+      "embedfields": [],
+      "outputs": [
+        {
+          "label": "next response",
+          "connections": []
+        }
+      ],
+      "inputs": [
+        {
+          "label": "trigger",
+          "id": "a9c7ff67-9913-4f93-9735-5512d9691917"
+        }
+      ],
+      "x": 940,
+      "y": 868,
+      "rtype": "Message",
+      "rsubtype": "Send Embed",
+      "formdata": [
+        "${dbsVars.CommandChannel.id}",
+        "1AFF00",
+        "Erfolgreich!",
+        "",
+        "",
+        "",
+        "",
+        "<@${tempVars.warnuser.id}> \ndu wurdest **gewarnt**!\n\nReason: ${tempVars.warnreason}",
+        "https://cdn.discordapp.com/emojis/583647419850424321.png?v=1&size=40",
+        "",
+        "KSA Bot | made by _927#5562",
+        "BOOL_TRUE@@",
+        "",
+        "temp"
+      ],
+      "formnames": [
+        "channelname",
+        "color",
+        "title",
+        "url",
+        "authorname",
+        "authorimageurl",
+        "authorlink",
+        "description",
+        "thumbnail",
+        "image",
+        "footer",
+        "timestamp",
+        "saveToVariable",
+        "saveToVariableType"
+      ]
+    },
+    {
+      "type": "command",
+      "name": "mute",
+      "guid": "1c2b5865-f9ab-49fc-9944-a757edfcc027",
+      "outputs": [
+        {
+          "label": "responses",
+          "connections": [
+            "5393098e-4b51-43f0-be40-79593d84b495"
+          ]
+        }
+      ],
+      "x": 4,
+      "y": 727
+    },
+    {
+      "type": "response",
+      "name": "getUser.mute",
+      "guid": "86d1314b-c6fa-4a26-a1fe-abc6de10d81e",
+      "reactionFields": [],
+      "embedfields": [],
+      "outputs": [
+        {
+          "label": "next response",
+          "connections": [
+            "ec254174-406a-4381-9b2b-e8fa9b3978fe"
+          ]
+        }
+      ],
+      "inputs": [
+        {
+          "label": "trigger",
+          "id": "5393098e-4b51-43f0-be40-79593d84b495"
+        }
+      ],
+      "x": 322,
+      "y": 722,
+      "rtype": "Variable",
+      "rsubtype": "Get Mentioned User",
+      "formdata": [
+        "muteuser",
+        "User",
+        "temp"
+      ],
+      "formnames": [
+        "varname",
+        "vartype",
+        "saveVarType"
+      ]
+    },
+    {
+      "type": "response",
+      "name": "muteReason",
+      "guid": "ec254174-406a-4381-9b2b-e8fa9b3978fe",
+      "reactionFields": [],
+      "embedfields": [],
+      "saveToVariable": "mutereason",
+      "saveToVariableType": "temp",
+      "outputs": [
+        {
+          "label": "next response",
+          "connections": [
+            "1102d628-25bc-4503-9bd4-3a93a6960eb7"
+          ]
+        }
+      ],
+      "inputs": [
+        {
+          "label": "trigger",
+          "id": "86d1314b-c6fa-4a26-a1fe-abc6de10d81e"
+        }
+      ],
+      "x": 477,
+      "y": 717,
+      "rtype": "Variable",
+      "rsubtype": "Store Value in Variable",
+      "formdata": [
+        "mutereason",
+        "Text",
+        "temp",
+        "2+"
+      ],
+      "formnames": [
+        "varname",
+        "vartype",
+        "saveVarType",
+        "param"
+      ]
+    },
+    {
+      "type": "response",
+      "name": "muteInfoUser",
+      "guid": "1102d628-25bc-4503-9bd4-3a93a6960eb7",
+      "reactionFields": [],
+      "embedfields": [],
+      "outputs": [
+        {
+          "label": "next response",
+          "connections": [
+            "75c51158-c38c-4341-a47f-16d73af69460"
+          ]
+        }
+      ],
+      "inputs": [
+        {
+          "label": "trigger",
+          "id": "ec254174-406a-4381-9b2b-e8fa9b3978fe"
+        }
+      ],
+      "x": 632,
+      "y": 715,
+      "rtype": "Message",
+      "rsubtype": "Send Embed",
+      "formdata": [
+        "${dbsVars.CommandChannel.id}",
+        "22FF00",
+        "Erfolgreich!",
+        "",
+        "",
+        "",
+        "",
+        "<@${tempVars.muteuser.id}> \nwurde erfolgreich **gemutet**",
+        "https://cdn.discordapp.com/emojis/583646649621151746.png?v=1&size=40",
+        "",
+        "KSA Bot | made by _927#5562",
+        "false",
+        "",
+        "temp"
+      ],
+      "formnames": [
+        "channelname",
+        "color",
+        "title",
+        "url",
+        "authorname",
+        "authorimageurl",
+        "authorlink",
+        "description",
+        "thumbnail",
+        "image",
+        "footer",
+        "timestamp",
+        "saveToVariable",
+        "saveToVariableType"
+      ]
+    },
+    {
+      "type": "response",
+      "name": "muteLogs",
+      "guid": "75c51158-c38c-4341-a47f-16d73af69460",
+      "reactionFields": [],
+      "embedfields": [],
+      "outputs": [
+        {
+          "label": "next response",
+          "connections": [
+            "93897994-cd74-4744-9289-e5161a390bab"
+          ]
+        }
+      ],
+      "inputs": [
+        {
+          "label": "trigger",
+          "id": "1102d628-25bc-4503-9bd4-3a93a6960eb7"
+        }
+      ],
+      "x": 786,
+      "y": 713,
+      "rtype": "Message",
+      "rsubtype": "Send Embed",
+      "formdata": [
+        "807333306970013766",
+        "FF9100",
+        "Muted!",
+        "",
+        "",
+        "",
+        "",
+        "User: <@${tempVars.muteuser.id}>\nReason: ${tempVars.mutereason}\nModerator: <@${dbsVars.CommandAuthor.id}>",
+        "${tempVars.muteuser.user.avatarURL}",
+        "",
+        "KSA Bot | made by _927#5562",
+        "false",
+        "",
+        "temp"
+      ],
+      "formnames": [
+        "channelname",
+        "color",
+        "title",
+        "url",
+        "authorname",
+        "authorimageurl",
+        "authorlink",
+        "description",
+        "thumbnail",
+        "image",
+        "footer",
+        "timestamp",
+        "saveToVariable",
+        "saveToVariableType"
+      ]
+    },
+    {
+      "type": "response",
+      "name": "muteGiveRole",
+      "guid": "93897994-cd74-4744-9289-e5161a390bab",
+      "reactionFields": [],
+      "embedfields": [],
+      "outputs": [
+        {
+          "label": "next response",
+          "connections": []
+        }
+      ],
+      "inputs": [
+        {
+          "label": "trigger",
+          "id": "75c51158-c38c-4341-a47f-16d73af69460"
+        }
+      ],
+      "x": 943,
+      "y": 715,
+      "rtype": "User Action",
+      "rsubtype": "Add Role to User",
+      "formdata": [
+        "${tempVars.muteuser.id}",
+        "muted"
+      ],
+      "formnames": [
+        "user",
+        "roleName"
+      ]
+    },
+    {
+      "type": "response",
+      "name": "checkPerms.ban",
+      "guid": "ba03f132-bfa8-41a1-afcc-e44a5bbf1372",
+      "reactionFields": [],
+      "embedfields": [],
+      "outputs": [
+        {
+          "label": "has perms",
+          "connections": [
+            "9a8cd208-d65c-4163-a565-cc7add469f95"
+          ]
+        },
+        {
+          "label": "doesn't have perms",
+          "connections": [
+            "2be980dc-b1d1-49ae-8322-eead92640f83"
+          ]
+        }
+      ],
+      "inputs": [
+        {
+          "label": "trigger",
+          "id": "ef084754-2d3c-4263-acf7-adb940dfdf6f"
+        }
+      ],
+      "x": 157,
+      "y": 93,
+      "rtype": "User Action",
+      "rsubtype": "Check User Permissions",
+      "formdata": [
+        "${dbsVars.CommandAuthor.id}",
+        [
+          "BAN_MEMBERS"
+        ]
+      ],
+      "formnames": [
+        "user",
+        "permissions"
+      ]
+    },
+    {
+      "type": "response",
+      "name": "checkPerms.kick",
+      "guid": "03ee5ca6-e2f7-4141-bd40-265db3fd395e",
+      "reactionFields": [],
+      "embedfields": [],
+      "outputs": [
+        {
+          "label": "has perms",
+          "connections": [
+            "97e3b7aa-7e26-4664-8f41-99aba34b7c3c"
+          ]
+        },
+        {
+          "label": "doesn't have perms",
+          "connections": [
+            "d7cb2804-30d2-4030-920c-68a9d366acd4"
+          ]
+        }
+      ],
+      "inputs": [
+        {
+          "label": "trigger",
+          "id": "f28e2389-6ca9-4228-823a-28bf782deb94"
+        }
+      ],
+      "x": 158,
+      "y": 256,
+      "rtype": "User Action",
+      "rsubtype": "Check User Permissions",
+      "formdata": [
+        "${dbsVars.CommandAuthor.id}",
+        [
+          "KICK_MEMBERS"
+        ]
+      ],
+      "formnames": [
+        "user",
+        "permissions"
+      ]
+    },
+    {
+      "type": "response",
+      "name": "checkPerms.warn",
+      "guid": "db16b6f2-2924-4ddd-acf7-0d4b62b7a6ae",
+      "reactionFields": [],
+      "embedfields": [],
+      "outputs": [
+        {
+          "label": "has perms",
+          "connections": [
+            "9aa28d53-73bb-4981-90bd-d875cc39d31d"
+          ]
+        },
+        {
+          "label": "doesn't have perms",
+          "connections": [
+            "572c478a-4030-4a78-a6ab-1e382f21c5ae"
+          ]
+        }
+      ],
+      "inputs": [
+        {
+          "label": "trigger",
+          "id": "77259ae7-10c3-4567-a4df-38c0da778d52"
+        }
+      ],
+      "x": 167,
+      "y": 866,
+      "rtype": "User Action",
+      "rsubtype": "Check User Permissions",
+      "formdata": [
+        "${dbsVars.CommandAuthor.id}",
+        [
+          "PRIORITY_SPEAKER"
+        ]
+      ],
+      "formnames": [
+        "user",
+        "permissions"
+      ]
+    },
+    {
+      "type": "response",
+      "name": "checkPerms.mute",
+      "guid": "5393098e-4b51-43f0-be40-79593d84b495",
+      "reactionFields": [],
+      "embedfields": [],
+      "outputs": [
+        {
+          "label": "has perms",
+          "connections": [
+            "86d1314b-c6fa-4a26-a1fe-abc6de10d81e"
+          ]
+        },
+        {
+          "label": "doesn't have perms",
+          "connections": [
+            "5bf5cbcf-9743-4e60-899f-7842f5dd34fd"
+          ]
+        }
+      ],
+      "inputs": [
+        {
+          "label": "trigger",
+          "id": "1c2b5865-f9ab-49fc-9944-a757edfcc027"
+        }
+      ],
+      "x": 162,
+      "y": 712,
+      "rtype": "User Action",
+      "rsubtype": "Check User Permissions",
+      "formdata": [
+        "${dbsVars.CommandAuthor.id}",
+        [
+          "MUTE_MEMBERS"
+        ]
+      ],
+      "formnames": [
+        "user",
+        "permissions"
+      ]
+    },
+    {
+      "type": "response",
+      "name": "noPerms",
+      "guid": "2be980dc-b1d1-49ae-8322-eead92640f83",
+      "reactionFields": [],
+      "embedfields": [],
+      "outputs": [
+        {
+          "label": "next response",
+          "connections": []
+        }
+      ],
+      "inputs": [
+        {
+          "label": "trigger",
+          "id": "ba03f132-bfa8-41a1-afcc-e44a5bbf1372"
+        }
+      ],
+      "x": 1404,
+      "y": 243,
+      "rtype": "Message",
+      "rsubtype": "Send Embed",
+      "formdata": [
+        "${dbsVars.CommandChannel.id}",
+        "FF0000",
+        "Keine Rechte",
+        "",
+        "",
+        "",
+        "",
+        "Du hast nicht genug Rechte um diesen\nBefehl auszuführen",
+        "https://cdn.discordapp.com/emojis/746426628871291020.png?v=1&size=40",
+        "",
+        "",
+        "false",
+        "",
+        "temp"
+      ],
+      "formnames": [
+        "channelname",
+        "color",
+        "title",
+        "url",
+        "authorname",
+        "authorimageurl",
+        "authorlink",
+        "description",
+        "thumbnail",
+        "image",
+        "footer",
+        "timestamp",
+        "saveToVariable",
+        "saveToVariableType"
+      ]
+    },
+    {
+      "type": "response",
+      "name": "noPerms_1",
+      "guid": "d7cb2804-30d2-4030-920c-68a9d366acd4",
+      "embedfields": [],
+      "outputs": [
+        {
+          "label": "next response",
+          "connections": []
+        }
+      ],
+      "inputs": [
+        {
+          "label": "trigger",
+          "id": "03ee5ca6-e2f7-4141-bd40-265db3fd395e"
+        }
+      ],
+      "x": 1401,
+      "y": 359,
+      "rtype": "Message",
+      "rsubtype": "Send Embed",
+      "formdata": [
+        "${dbsVars.CommandChannel.id}",
+        "FF0000",
+        "Keine Rechte",
+        "",
+        "",
+        "",
+        "",
+        "Du hast nicht genug Rechte um diesen\nBefehl auszuführen",
+        "https://cdn.discordapp.com/emojis/746426628871291020.png?v=1&size=40",
+        "",
+        "",
+        "false",
+        "",
+        "temp"
+      ],
+      "formnames": [
+        "channelname",
+        "color",
+        "title",
+        "url",
+        "authorname",
+        "authorimageurl",
+        "authorlink",
+        "description",
+        "thumbnail",
+        "image",
+        "footer",
+        "timestamp",
+        "saveToVariable",
+        "saveToVariableType"
+      ]
+    },
+    {
+      "type": "response",
+      "name": "noPerms_2",
+      "guid": "d3cf8ab6-16d3-421e-a855-8f4a0bb1f600",
+      "embedfields": [],
+      "outputs": [
+        {
+          "label": "next response",
+          "connections": []
+        }
+      ],
+      "inputs": [
+        {
+          "label": "trigger",
+          "id": "48fa5856-c93b-4e28-a3f3-cac442434bc3"
+        }
+      ],
+      "x": 1402,
+      "y": 475,
+      "rtype": "Message",
+      "rsubtype": "Send Embed",
+      "formdata": [
+        "${dbsVars.CommandChannel.id}",
+        "FF0000",
+        "Keine Rechte",
+        "",
+        "",
+        "",
+        "",
+        "Du hast nicht genug Rechte um diesen\nBefehl auszuführen",
+        "https://cdn.discordapp.com/emojis/746426628871291020.png?v=1&size=40",
+        "",
+        "",
+        "false",
+        "",
+        "temp"
+      ],
+      "formnames": [
+        "channelname",
+        "color",
+        "title",
+        "url",
+        "authorname",
+        "authorimageurl",
+        "authorlink",
+        "description",
+        "thumbnail",
+        "image",
+        "footer",
+        "timestamp",
+        "saveToVariable",
+        "saveToVariableType"
+      ]
+    },
+    {
+      "type": "response",
+      "name": "noPerms_3",
+      "guid": "2b8d7f38-6725-4dad-9572-5cf3bd60f292",
+      "embedfields": [],
+      "outputs": [
+        {
+          "label": "next response",
+          "connections": []
+        }
+      ],
+      "inputs": [
+        {
+          "label": "trigger",
+          "id": ""
+        }
+      ],
+      "x": 1401,
+      "y": 585,
+      "rtype": "Message",
+      "rsubtype": "Send Embed",
+      "formdata": [
+        "${dbsVars.CommandChannel.id}",
+        "FF0000",
+        "Keine Rechte",
+        "",
+        "",
+        "",
+        "",
+        "Du hast nicht genug Rechte um diesen\nBefehl auszuführen",
+        "https://cdn.discordapp.com/emojis/746426628871291020.png?v=1&size=40",
+        "",
+        "",
+        "false",
+        "",
+        "temp"
+      ],
+      "formnames": [
+        "channelname",
+        "color",
+        "title",
+        "url",
+        "authorname",
+        "authorimageurl",
+        "authorlink",
+        "description",
+        "thumbnail",
+        "image",
+        "footer",
+        "timestamp",
+        "saveToVariable",
+        "saveToVariableType"
+      ]
+    },
+    {
+      "type": "response",
+      "name": "noPerms_4",
+      "guid": "5bf5cbcf-9743-4e60-899f-7842f5dd34fd",
+      "embedfields": [],
+      "outputs": [
+        {
+          "label": "next response",
+          "connections": []
+        }
+      ],
+      "inputs": [
+        {
+          "label": "trigger",
+          "id": "5393098e-4b51-43f0-be40-79593d84b495"
+        }
+      ],
+      "x": 1404,
+      "y": 699,
+      "rtype": "Message",
+      "rsubtype": "Send Embed",
+      "formdata": [
+        "${dbsVars.CommandChannel.id}",
+        "FF0000",
+        "Keine Rechte",
+        "",
+        "",
+        "",
+        "",
+        "Du hast nicht genug Rechte um diesen\nBefehl auszuführen",
+        "https://cdn.discordapp.com/emojis/746426628871291020.png?v=1&size=40",
+        "",
+        "",
+        "false",
+        "",
+        "temp"
+      ],
+      "formnames": [
+        "channelname",
+        "color",
+        "title",
+        "url",
+        "authorname",
+        "authorimageurl",
+        "authorlink",
+        "description",
+        "thumbnail",
+        "image",
+        "footer",
+        "timestamp",
+        "saveToVariable",
+        "saveToVariableType"
+      ]
+    },
+    {
+      "type": "response",
+      "name": "noPerms_5",
+      "guid": "572c478a-4030-4a78-a6ab-1e382f21c5ae",
+      "embedfields": [],
+      "outputs": [
+        {
+          "label": "next response",
+          "connections": []
+        }
+      ],
+      "inputs": [
+        {
+          "label": "trigger",
+          "id": "db16b6f2-2924-4ddd-acf7-0d4b62b7a6ae"
+        }
+      ],
+      "x": 1403,
+      "y": 818,
+      "rtype": "Message",
+      "rsubtype": "Send Embed",
+      "formdata": [
+        "${dbsVars.CommandChannel.id}",
+        "FF0000",
+        "Keine Rechte",
+        "",
+        "",
+        "",
+        "",
+        "Du hast nicht genug Rechte um diesen\nBefehl auszuführen",
+        "https://cdn.discordapp.com/emojis/746426628871291020.png?v=1&size=40",
+        "",
+        "",
+        "false",
+        "",
+        "temp"
+      ],
+      "formnames": [
+        "channelname",
+        "color",
+        "title",
+        "url",
+        "authorname",
+        "authorimageurl",
+        "authorlink",
+        "description",
+        "thumbnail",
+        "image",
+        "footer",
+        "timestamp",
+        "saveToVariable",
+        "saveToVariableType"
+      ]
+    },
+    {
+      "type": "response",
+      "name": "checkPerms.clear",
+      "guid": "48fa5856-c93b-4e28-a3f3-cac442434bc3",
+      "reactionFields": [],
+      "embedfields": [],
+      "outputs": [
+        {
+          "label": "has perms",
+          "connections": [
+            "475af40e-da15-4cc8-9a17-47427903b333"
+          ]
+        },
+        {
+          "label": "doesn't have perms",
+          "connections": [
+            "d3cf8ab6-16d3-421e-a855-8f4a0bb1f600"
+          ]
+        }
+      ],
+      "inputs": [
+        {
+          "label": "trigger",
+          "id": "a6614e62-2534-4b22-a7ff-a1b6d18929ba"
+        }
+      ],
+      "x": 160,
+      "y": 416,
+      "rtype": "User Action",
+      "rsubtype": "Check User Permissions",
+      "formdata": [
+        "${dbsVars.CommandAuthor.id}",
+        [
+          "PRIORITY_SPEAKER"
+        ]
+      ],
+      "formnames": [
+        "user",
+        "permissions"
+      ]
+    },
+    {
+      "type": "command",
+      "name": "funny",
+      "guid": "268f3721-9a3c-4518-a0c4-e25067415258",
+      "outputs": [
+        {
+          "label": "responses",
+          "connections": [
+            "2b0e47dc-32d9-497e-bce5-03f6fe8d9b66"
+          ]
+        }
+      ],
+      "x": 2,
+      "y": 1038
+    },
+    {
+      "type": "response",
+      "name": "funnyMsg",
+      "guid": "2b0e47dc-32d9-497e-bce5-03f6fe8d9b66",
+      "reactionFields": [],
+      "embedfields": [],
+      "outputs": [
+        {
+          "label": "next response",
+          "connections": []
+        }
+      ],
+      "inputs": [
+        {
+          "label": "trigger",
+          "id": "268f3721-9a3c-4518-a0c4-e25067415258"
+        }
+      ],
+      "x": 170,
+      "y": 1028,
+      "rtype": "Message",
+      "rsubtype": "Send Embed",
+      "formdata": [
+        "${dbsVars.CommandChannel.id}",
+        "00CCFF",
+        "Witzig",
+        "",
+        "",
+        "",
+        "",
+        "Du warst richtig witzig",
+        "https://cdn.discordapp.com/emojis/781605349182013460.png?v=1&size=40",
+        "",
+        "KSA Bot | made by _927#5562",
+        "false",
+        "",
+        "temp"
+      ],
+      "formnames": [
+        "channelname",
+        "color",
+        "title",
+        "url",
+        "authorname",
+        "authorimageurl",
+        "authorlink",
+        "description",
+        "thumbnail",
+        "image",
+        "footer",
+        "timestamp",
+        "saveToVariable",
+        "saveToVariableType"
+      ]
+    },
+    {
+      "type": "command",
+      "name": "warncheck",
+      "guid": "485c495e-a794-447d-ae09-e34f5be668b4",
+      "outputs": [
+        {
+          "label": "responses",
+          "connections": [
+            "185351ea-166e-4849-b139-f12a95da4ec0"
+          ]
+        }
+      ],
+      "x": 3,
+      "y": 1165
+    },
+    {
+      "type": "response",
+      "name": "warncheckGetUser",
+      "guid": "185351ea-166e-4849-b139-f12a95da4ec0",
+      "reactionFields": [],
+      "embedfields": [],
+      "outputs": [
+        {
+          "label": "next response",
+          "connections": [
+            "78003ce0-718f-4682-bc98-6fa05a242937"
+          ]
+        }
+      ],
+      "inputs": [
+        {
+          "label": "trigger",
+          "id": "485c495e-a794-447d-ae09-e34f5be668b4"
+        }
+      ],
+      "x": 170,
+      "y": 1154,
+      "rtype": "Variable",
+      "rsubtype": "Get Mentioned User",
+      "formdata": [
+        "warncheckuser",
+        "User",
+        "temp"
+      ],
+      "formnames": [
+        "varname",
+        "vartype",
+        "saveVarType"
+      ]
+    },
+    {
+      "type": "response",
+      "name": "warncheckUser",
+      "guid": "78003ce0-718f-4682-bc98-6fa05a242937",
+      "reactionFields": [],
+      "embedfields": [],
+      "outputs": [
+        {
+          "label": "true",
+          "connections": [
+            "0a251160-6690-45ef-9f27-58b63762851e"
+          ]
+        },
+        {
+          "label": "false",
+          "connections": [
+            "ffe8ac45-890f-4d0c-9815-04d01f2646f4"
+          ]
+        }
+      ],
+      "inputs": [
+        {
+          "label": "trigger",
+          "id": "185351ea-166e-4849-b139-f12a95da4ec0"
+        }
+      ],
+      "x": 326,
+      "y": 1136,
+      "rtype": "User Data",
+      "rsubtype": "Check User Data",
+      "formdata": [
+        "${tempVars.warncheckuser.id}",
+        "warns",
+        "greater than",
+        "2"
+      ],
+      "formnames": [
+        "user",
+        "field",
+        "compare",
+        "value"
+      ]
+    },
+    {
+      "type": "response",
+      "name": "warnCheckSucces",
+      "guid": "ffe8ac45-890f-4d0c-9815-04d01f2646f4",
+      "reactionFields": [],
+      "embedfields": [],
+      "outputs": [
+        {
+          "label": "next response",
+          "connections": []
+        }
+      ],
+      "inputs": [
+        {
+          "label": "trigger",
+          "id": "78003ce0-718f-4682-bc98-6fa05a242937"
+        }
+      ],
+      "x": 487,
+      "y": 1212,
+      "rtype": "Message",
+      "rsubtype": "Send Embed",
+      "formdata": [
+        "${dbsVars.CommandChannel.id}",
+        "00FF08",
+        "Alles Safe!",
+        "",
+        "",
+        "",
+        "",
+        "<@${tempVars.warncheckuser.id}>\n hat unter 3 Warnungen!",
+        "${tempVars.warncheckuser.user.avatarURL}",
+        "https://cdn.discordapp.com/emojis/746427855336112201.gif?v=1&size=40",
+        "KSA Bot | made by _927#5562",
+        "false",
+        "",
+        "temp"
+      ],
+      "formnames": [
+        "channelname",
+        "color",
+        "title",
+        "url",
+        "authorname",
+        "authorimageurl",
+        "authorlink",
+        "description",
+        "thumbnail",
+        "image",
+        "footer",
+        "timestamp",
+        "saveToVariable",
+        "saveToVariableType"
+      ]
+    },
+    {
+      "type": "response",
+      "name": "warnCheckFail",
+      "guid": "0a251160-6690-45ef-9f27-58b63762851e",
+      "reactionFields": [],
+      "embedfields": [],
+      "outputs": [
+        {
+          "label": "next response",
+          "connections": [
+            "42573308-34cc-4516-9529-29068f17ac9e"
+          ]
+        }
+      ],
+      "inputs": [
+        {
+          "label": "trigger",
+          "id": "78003ce0-718f-4682-bc98-6fa05a242937"
+        }
+      ],
+      "x": 490,
+      "y": 1099,
+      "rtype": "Message",
+      "rsubtype": "Send Embed",
+      "formdata": [
+        "${dbsVars.CommandChannel.id}",
+        "FF0000",
+        "Oh oh...",
+        "",
+        "",
+        "",
+        "",
+        "<@${tempVars.warncheckuser.id}>\nhat mehr als 2 Warnungen!\n\n<@${tempVars.warncheckuser.id}> wurde gemuted!",
+        "${tempVars.warncheckuser.user.avatarURL}",
+        "https://cdn.discordapp.com/emojis/746426626266497087.gif?v=1&size=40",
+        "KSA Bot | made by _927#5562",
+        "false",
+        "",
+        "temp"
+      ],
+      "formnames": [
+        "channelname",
+        "color",
+        "title",
+        "url",
+        "authorname",
+        "authorimageurl",
+        "authorlink",
+        "description",
+        "thumbnail",
+        "image",
+        "footer",
+        "timestamp",
+        "saveToVariable",
+        "saveToVariableType"
+      ]
+    },
+    {
+      "type": "response",
+      "name": "muteUser.warncheck",
+      "guid": "42573308-34cc-4516-9529-29068f17ac9e",
+      "reactionFields": [],
+      "embedfields": [],
+      "outputs": [
+        {
+          "label": "next response",
+          "connections": []
+        }
+      ],
+      "inputs": [
+        {
+          "label": "trigger",
+          "id": "0a251160-6690-45ef-9f27-58b63762851e"
+        }
+      ],
+      "x": 648,
+      "y": 1154,
+      "rtype": "User Action",
+      "rsubtype": "Add Role to User",
+      "formdata": [
+        "${tempVars.warncheckuser.id}",
+        "muted"
+      ],
+      "formnames": [
+        "user",
+        "roleName"
+      ]
+    },
+    {
+      "type": "command",
+      "name": "removewarns",
+      "guid": "a615584c-215f-428d-940a-77f1a9fe5ccc",
+      "outputs": [
+        {
+          "label": "responses",
+          "connections": [
+            "cd7c34bd-a0ec-4650-8f88-0924b98d6064"
+          ]
+        }
+      ],
+      "x": 3,
+      "y": 1372
+    },
+    {
+      "type": "response",
+      "name": "removewarnsuser",
+      "guid": "fd6eb49c-19ed-422c-bc6a-e013c240d35e",
+      "reactionFields": [],
+      "embedfields": [],
+      "outputs": [
+        {
+          "label": "next response",
+          "connections": [
+            "cbaf6a1f-7793-4614-9a92-d177c872d2f2"
+          ]
+        }
+      ],
+      "inputs": [
+        {
+          "label": "trigger",
+          "id": "cd7c34bd-a0ec-4650-8f88-0924b98d6064"
+        }
+      ],
+      "x": 349,
+      "y": 1339,
+      "rtype": "Variable",
+      "rsubtype": "Get Mentioned User",
+      "formdata": [
+        "removewarnsuser",
+        "User",
+        "temp"
+      ],
+      "formnames": [
+        "varname",
+        "vartype",
+        "saveVarType"
+      ]
+    },
+    {
+      "type": "response",
+      "name": "removeWarns",
+      "guid": "cbaf6a1f-7793-4614-9a92-d177c872d2f2",
+      "reactionFields": [],
+      "embedfields": [],
+      "outputs": [
+        {
+          "label": "next response",
+          "connections": [
+            "96553a97-13f1-4b1c-91e4-1ec52a24b6e3"
+          ]
+        }
+      ],
+      "inputs": [
+        {
+          "label": "trigger",
+          "id": "fd6eb49c-19ed-422c-bc6a-e013c240d35e"
+        }
+      ],
+      "x": 504,
+      "y": 1349,
+      "rtype": "User Data",
+      "rsubtype": "Set User Data",
+      "formdata": [
+        "${tempVars.removewarnsuser.id}",
+        "warns",
+        "0"
+      ],
+      "formnames": [
+        "user",
+        "field",
+        "fieldvalue"
+      ]
+    },
+    {
+      "type": "response",
+      "name": "warnsremoved",
+      "guid": "96553a97-13f1-4b1c-91e4-1ec52a24b6e3",
+      "reactionFields": [],
+      "embedfields": [],
+      "outputs": [
+        {
+          "label": "next response",
+          "connections": []
+        }
+      ],
+      "inputs": [
+        {
+          "label": "trigger",
+          "id": "cbaf6a1f-7793-4614-9a92-d177c872d2f2"
+        }
+      ],
+      "x": 659,
+      "y": 1347,
+      "rtype": "Message",
+      "rsubtype": "Send Embed",
+      "formdata": [
+        "${dbsVars.CommandChannel.id}",
+        "11FF00",
+        "Erfolgreich!",
+        "",
+        "",
+        "",
+        "",
+        "Alle Warnungen von <@${tempVars.removewarnsuser.id}> \nwurden **gelöscht**",
+        "${tempVars.removewarnsuser.user.avatarURL}",
+        "https://cdn.discordapp.com/emojis/780338281572859945.png?v=1&size=40",
+        "KSA Bot | made by _927#5562",
+        "BOOL_TRUE@@",
+        "",
+        "temp"
+      ],
+      "formnames": [
+        "channelname",
+        "color",
+        "title",
+        "url",
+        "authorname",
+        "authorimageurl",
+        "authorlink",
+        "description",
+        "thumbnail",
+        "image",
+        "footer",
+        "timestamp",
+        "saveToVariable",
+        "saveToVariableType"
+      ]
+    },
+    {
+      "type": "response",
+      "name": "checkPerms.removewarns",
+      "guid": "cd7c34bd-a0ec-4650-8f88-0924b98d6064",
+      "reactionFields": [],
+      "embedfields": [],
+      "outputs": [
+        {
+          "label": "has perms",
+          "connections": [
+            "fd6eb49c-19ed-422c-bc6a-e013c240d35e"
+          ]
+        },
+        {
+          "label": "doesn't have perms",
+          "connections": [
+            "8e860838-ef14-4402-973a-77a973935ccc"
+          ]
+        }
+      ],
+      "inputs": [
+        {
+          "label": "trigger",
+          "id": "a615584c-215f-428d-940a-77f1a9fe5ccc"
+        }
+      ],
+      "x": 173,
+      "y": 1307,
+      "rtype": "User Action",
+      "rsubtype": "Check User Permissions",
+      "formdata": [
+        "${dbsVars.CommandAuthor.id}",
+        [
+          "PRIORITY_SPEAKER"
+        ]
+      ],
+      "formnames": [
+        "user",
+        "permissions"
+      ]
+    },
+    {
+      "type": "command",
+      "name": "userid",
+      "guid": "092666d3-1ab0-4f20-bf34-2a13a68e6877",
+      "outputs": [
+        {
+          "label": "responses",
+          "connections": [
+            "0cea8776-0705-4b8b-996d-b2380d77fdf1"
+          ]
+        }
+      ],
+      "x": 6,
+      "y": 1509
+    },
+    {
+      "type": "response",
+      "name": "getUser.userid",
+      "guid": "c4779713-ac15-4698-8298-799d1469ef1a",
+      "reactionFields": [],
+      "embedfields": [],
+      "outputs": [
+        {
+          "label": "next response",
+          "connections": [
+            "4708228f-136e-4a60-8a34-7b1d9e8ada01"
+          ]
+        }
+      ],
+      "inputs": [
+        {
+          "label": "trigger",
+          "id": "0cea8776-0705-4b8b-996d-b2380d77fdf1"
+        }
+      ],
+      "x": 320,
+      "y": 1489,
+      "rtype": "Variable",
+      "rsubtype": "Get Mentioned User",
+      "formdata": [
+        "useriduser",
+        "User",
+        "temp"
+      ],
+      "formnames": [
+        "varname",
+        "vartype",
+        "saveVarType"
+      ]
+    },
+    {
+      "type": "response",
+      "name": "getuserid",
+      "guid": "4708228f-136e-4a60-8a34-7b1d9e8ada01",
+      "reactionFields": [],
+      "embedfields": [],
+      "outputs": [
+        {
+          "label": "next response",
+          "connections": []
+        }
+      ],
+      "inputs": [
+        {
+          "label": "trigger",
+          "id": "c4779713-ac15-4698-8298-799d1469ef1a"
+        }
+      ],
+      "x": 481,
+      "y": 1495,
+      "rtype": "Message",
+      "rsubtype": "Send Embed",
+      "formdata": [
+        "${dbsVars.CommandChannel.id}",
+        "1100FF",
+        "Hier ist die UserID",
+        "",
+        "",
+        "",
+        "",
+        "<@${tempVars.useriduser.id}> userid is:\n\n**${tempVars.useriduser.id}**",
+        "${tempVars.useriduser.user.avatarURL}",
+        "https://cdn.discordapp.com/emojis/740713271555915837.gif?v=1&size=40",
+        "KSA Bot | made by _927#5562",
+        "false",
+        "",
+        "temp"
+      ],
+      "formnames": [
+        "channelname",
+        "color",
+        "title",
+        "url",
+        "authorname",
+        "authorimageurl",
+        "authorlink",
+        "description",
+        "thumbnail",
+        "image",
+        "footer",
+        "timestamp",
+        "saveToVariable",
+        "saveToVariableType"
+      ]
+    },
+    {
+      "type": "command",
+      "name": "unmute",
+      "guid": "956fd056-16a8-47fd-a4c1-55fed4acc618",
+      "outputs": [
+        {
+          "label": "responses",
+          "connections": [
+            "29048321-6705-4c1e-8106-ab06ee1e8ea6"
+          ]
+        }
+      ],
+      "x": 820,
+      "y": 1032
+    },
+    {
+      "type": "response",
+      "name": "unmuteGetUser",
+      "guid": "9f071e6c-2945-4490-b6ab-8f887dcb8c4f",
+      "reactionFields": [],
+      "embedfields": [],
+      "outputs": [
+        {
+          "label": "next response",
+          "connections": [
+            "d4dc0116-69a0-4106-a4f1-81a5ef465c8b"
+          ]
+        }
+      ],
+      "inputs": [
+        {
+          "label": "trigger",
+          "id": "29048321-6705-4c1e-8106-ab06ee1e8ea6"
+        }
+      ],
+      "x": 1138,
+      "y": 1010,
+      "rtype": "Variable",
+      "rsubtype": "Get Mentioned User",
+      "formdata": [
+        "unmuteuser",
+        "User",
+        "temp"
+      ],
+      "formnames": [
+        "varname",
+        "vartype",
+        "saveVarType"
+      ]
+    },
+    {
+      "type": "response",
+      "name": "unmuteMsg",
+      "guid": "d4dc0116-69a0-4106-a4f1-81a5ef465c8b",
+      "reactionFields": [],
+      "embedfields": [],
+      "outputs": [
+        {
+          "label": "next response",
+          "connections": [
+            "fec21c70-b280-40df-9f0d-7b789886caed"
+          ]
+        }
+      ],
+      "inputs": [
+        {
+          "label": "trigger",
+          "id": "9f071e6c-2945-4490-b6ab-8f887dcb8c4f"
+        }
+      ],
+      "x": 1295,
+      "y": 1011,
+      "rtype": "Message",
+      "rsubtype": "Send Embed",
+      "formdata": [
+        "${dbsVars.CommandChannel.id}",
+        "00FF11",
+        "Unmuted!",
+        "",
+        "",
+        "",
+        "",
+        "Herzlichen Glückwunsch!\n<@${tempVars.unmuteuser.id}> du wurdest unmuted.",
+        "${tempVars.unmuteuser.user.avatarURL}",
+        "https://cdn.discordapp.com/emojis/780552176468099102.png?v=1&size=40",
+        "KSA Bot | made by _927#5562",
+        "BOOL_TRUE@@",
+        "",
+        "temp"
+      ],
+      "formnames": [
+        "channelname",
+        "color",
+        "title",
+        "url",
+        "authorname",
+        "authorimageurl",
+        "authorlink",
+        "description",
+        "thumbnail",
+        "image",
+        "footer",
+        "timestamp",
+        "saveToVariable",
+        "saveToVariableType"
+      ]
+    },
+    {
+      "type": "response",
+      "name": "checkPerms.unmute",
+      "guid": "29048321-6705-4c1e-8106-ab06ee1e8ea6",
+      "reactionFields": [],
+      "embedfields": [],
+      "outputs": [
+        {
+          "label": "has perms",
+          "connections": [
+            "9f071e6c-2945-4490-b6ab-8f887dcb8c4f"
+          ]
+        },
+        {
+          "label": "doesn't have perms",
+          "connections": [
+            "124c268d-46d5-49bb-a643-6149e114b495"
+          ]
+        }
+      ],
+      "inputs": [
+        {
+          "label": "trigger",
+          "id": "956fd056-16a8-47fd-a4c1-55fed4acc618"
+        }
+      ],
+      "x": 975,
+      "y": 1017,
+      "rtype": "User Action",
+      "rsubtype": "Check User Permissions",
+      "formdata": [
+        "${dbsVars.CommandAuthor.id}",
+        [
+          "PRIORITY_SPEAKER"
+        ]
+      ],
+      "formnames": [
+        "user",
+        "permissions"
+      ]
+    },
+    {
+      "type": "response",
+      "name": "noPerms_5_1",
+      "guid": "124c268d-46d5-49bb-a643-6149e114b495",
+      "embedfields": [],
+      "outputs": [
+        {
+          "label": "next response",
+          "connections": []
+        }
+      ],
+      "inputs": [
+        {
+          "label": "trigger",
+          "id": "29048321-6705-4c1e-8106-ab06ee1e8ea6"
+        }
+      ],
+      "x": 1585,
+      "y": 820,
+      "rtype": "Message",
+      "rsubtype": "Send Embed",
+      "formdata": [
+        "${dbsVars.CommandChannel.id}",
+        "FF0000",
+        "Keine Rechte",
+        "",
+        "",
+        "",
+        "",
+        "Du hast nicht genug Rechte um diesen\nBefehl auszuführen",
+        "https://cdn.discordapp.com/emojis/746426628871291020.png?v=1&size=40",
+        "",
+        "",
+        "false",
+        "",
+        "temp"
+      ],
+      "formnames": [
+        "channelname",
+        "color",
+        "title",
+        "url",
+        "authorname",
+        "authorimageurl",
+        "authorlink",
+        "description",
+        "thumbnail",
+        "image",
+        "footer",
+        "timestamp",
+        "saveToVariable",
+        "saveToVariableType"
+      ]
+    },
+    {
+      "type": "response",
+      "name": "noPerms_5_2",
+      "guid": "8e860838-ef14-4402-973a-77a973935ccc",
+      "embedfields": [],
+      "outputs": [
+        {
+          "label": "next response",
+          "connections": []
+        }
+      ],
+      "inputs": [
+        {
+          "label": "trigger",
+          "id": "cd7c34bd-a0ec-4650-8f88-0924b98d6064"
+        }
+      ],
+      "x": 1582,
+      "y": 708,
+      "rtype": "Message",
+      "rsubtype": "Send Embed",
+      "formdata": [
+        "${dbsVars.CommandChannel.id}",
+        "FF0000",
+        "Keine Rechte",
+        "",
+        "",
+        "",
+        "",
+        "Du hast nicht genug Rechte um diesen\nBefehl auszuführen",
+        "https://cdn.discordapp.com/emojis/746426628871291020.png?v=1&size=40",
+        "",
+        "",
+        "false",
+        "",
+        "temp"
+      ],
+      "formnames": [
+        "channelname",
+        "color",
+        "title",
+        "url",
+        "authorname",
+        "authorimageurl",
+        "authorlink",
+        "description",
+        "thumbnail",
+        "image",
+        "footer",
+        "timestamp",
+        "saveToVariable",
+        "saveToVariableType"
+      ]
+    },
+    {
+      "type": "response",
+      "name": "noPerms_5_3",
+      "guid": "762c37b3-a45b-4e16-8ed0-066325dc7e7b",
+      "embedfields": [],
+      "outputs": [
+        {
+          "label": "next response",
+          "connections": []
+        }
+      ],
+      "inputs": [
+        {
+          "label": "trigger",
+          "id": []
+        }
+      ],
+      "x": 1578,
+      "y": 589,
+      "rtype": "Message",
+      "rsubtype": "Send Embed",
+      "formdata": [
+        "${dbsVars.CommandChannel.id}",
+        "FF0000",
+        "Keine Rechte",
+        "",
+        "",
+        "",
+        "",
+        "Du hast nicht genug Rechte um diesen\nBefehl auszuführen",
+        "https://cdn.discordapp.com/emojis/746426628871291020.png?v=1&size=40",
+        "",
+        "",
+        "false",
+        "",
+        "temp"
+      ],
+      "formnames": [
+        "channelname",
+        "color",
+        "title",
+        "url",
+        "authorname",
+        "authorimageurl",
+        "authorlink",
+        "description",
+        "thumbnail",
+        "image",
+        "footer",
+        "timestamp",
+        "saveToVariable",
+        "saveToVariableType"
+      ]
+    },
+    {
+      "type": "response",
+      "name": "unmuteRole",
+      "guid": "fec21c70-b280-40df-9f0d-7b789886caed",
+      "reactionFields": [],
+      "embedfields": [],
+      "outputs": [
+        {
+          "label": "next response",
+          "connections": []
+        }
+      ],
+      "inputs": [
+        {
+          "label": "trigger",
+          "id": "d4dc0116-69a0-4106-a4f1-81a5ef465c8b"
+        }
+      ],
+      "x": 1455,
+      "y": 1010,
+      "rtype": "User Action",
+      "rsubtype": "Remove Role From User",
+      "formdata": [
+        "${tempVars.unmuteuser.id}",
+        "muted",
+        "User got unmuted by moderator"
+      ],
+      "formnames": [
+        "user",
+        "roleName",
+        "reason"
+      ]
+    },
+    {
+      "type": "command",
+      "name": "ping",
+      "guid": "01c599ab-e6b7-407b-8511-c4c1ef6b7347",
+      "outputs": [
+        {
+          "label": "responses",
+          "connections": [
+            "41919ca5-277d-4a4c-ba49-4d310794caff"
+          ]
+        }
+      ],
+      "x": 875,
+      "y": 1274
+    },
+    {
+      "type": "response",
+      "name": "getUser.ping",
+      "guid": "41919ca5-277d-4a4c-ba49-4d310794caff",
+      "reactionFields": [],
+      "embedfields": [],
+      "outputs": [
+        {
+          "label": "next response",
+          "connections": [
+            "ec9dabcc-4d5f-4614-a226-3a498ca91c99"
+          ]
+        }
+      ],
+      "inputs": [
+        {
+          "label": "trigger",
+          "id": "01c599ab-e6b7-407b-8511-c4c1ef6b7347"
+        }
+      ],
+      "x": 1029,
+      "y": 1256,
+      "rtype": "Variable",
+      "rsubtype": "Get Mentioned User",
+      "formdata": [
+        "pinguser",
+        "User",
+        "temp"
+      ],
+      "formnames": [
+        "varname",
+        "vartype",
+        "saveVarType"
+      ]
+    },
+    {
+      "type": "response",
+      "name": "pingUser",
+      "guid": "ec9dabcc-4d5f-4614-a226-3a498ca91c99",
+      "reactionFields": [],
+      "embedfields": [],
+      "outputs": [
+        {
+          "label": "next response",
+          "connections": [
+            "168765c2-266f-4ce7-9f9b-38aeee8bb16f"
+          ]
+        }
+      ],
+      "inputs": [
+        {
+          "label": "trigger",
+          "id": "41919ca5-277d-4a4c-ba49-4d310794caff"
+        }
+      ],
+      "x": 1183,
+      "y": 1254,
+      "rtype": "Message",
+      "rsubtype": "Send Message",
+      "formdata": [
+        "${dbsVars.CommandChannel.id}",
+        "<@${tempVars.pinguser.id}>",
+        "",
+        "temp"
+      ],
+      "formnames": [
+        "channelName",
+        "messageText",
+        "saveToVariable",
+        "saveToVariableType"
+      ]
+    },
+    {
+      "type": "response",
+      "name": "pingUser_1",
+      "guid": "168765c2-266f-4ce7-9f9b-38aeee8bb16f",
+      "embedfields": [],
+      "outputs": [
+        {
+          "label": "next response",
+          "connections": [
+            "a0fbd436-523a-4935-8055-cd73b649f68b"
+          ]
+        }
+      ],
+      "inputs": [
+        {
+          "label": "trigger",
+          "id": "ec9dabcc-4d5f-4614-a226-3a498ca91c99"
+        }
+      ],
+      "x": 1339,
+      "y": 1251,
+      "rtype": "Message",
+      "rsubtype": "Send Message",
+      "formdata": [
+        "${dbsVars.CommandChannel.id}",
+        "<@${tempVars.pinguser.id}>",
+        "",
+        "temp"
+      ],
+      "formnames": [
+        "channelName",
+        "messageText",
+        "saveToVariable",
+        "saveToVariableType"
+      ]
+    },
+    {
+      "type": "response",
+      "name": "pingUser_2",
+      "guid": "a0fbd436-523a-4935-8055-cd73b649f68b",
+      "embedfields": [],
+      "outputs": [
+        {
+          "label": "next response",
+          "connections": [
+            "52e29c33-9ff7-45f1-ae1d-5e85593b4a16"
+          ]
+        }
+      ],
+      "inputs": [
+        {
+          "label": "trigger",
+          "id": "168765c2-266f-4ce7-9f9b-38aeee8bb16f"
+        }
+      ],
+      "x": 1037,
+      "y": 1368,
+      "rtype": "Message",
+      "rsubtype": "Send Message",
+      "formdata": [
+        "${dbsVars.CommandChannel.id}",
+        "<@${tempVars.pinguser.id}>",
+        "",
+        "temp"
+      ],
+      "formnames": [
+        "channelName",
+        "messageText",
+        "saveToVariable",
+        "saveToVariableType"
+      ]
+    },
+    {
+      "type": "response",
+      "name": "pingUser_3",
+      "guid": "52e29c33-9ff7-45f1-ae1d-5e85593b4a16",
+      "embedfields": [],
+      "outputs": [
+        {
+          "label": "next response",
+          "connections": [
+            "93add6c7-18a4-4533-adbf-a3df83790c46"
+          ]
+        }
+      ],
+      "inputs": [
+        {
+          "label": "trigger",
+          "id": "a0fbd436-523a-4935-8055-cd73b649f68b"
+        }
+      ],
+      "x": 1191,
+      "y": 1367,
+      "rtype": "Message",
+      "rsubtype": "Send Message",
+      "formdata": [
+        "${dbsVars.CommandChannel.id}",
+        "<@${tempVars.pinguser.id}>",
+        "",
+        "temp"
+      ],
+      "formnames": [
+        "channelName",
+        "messageText",
+        "saveToVariable",
+        "saveToVariableType"
+      ]
+    },
+    {
+      "type": "response",
+      "name": "pingUser_4",
+      "guid": "93add6c7-18a4-4533-adbf-a3df83790c46",
+      "embedfields": [],
+      "outputs": [
+        {
+          "label": "next response",
+          "connections": []
+        }
+      ],
+      "inputs": [
+        {
+          "label": "trigger",
+          "id": "52e29c33-9ff7-45f1-ae1d-5e85593b4a16"
+        }
+      ],
+      "x": 1348,
+      "y": 1366,
+      "rtype": "Message",
+      "rsubtype": "Send Message",
+      "formdata": [
+        "${dbsVars.CommandChannel.id}",
+        "<@${tempVars.pinguser.id}>",
+        "",
+        "temp"
+      ],
+      "formnames": [
+        "channelName",
+        "messageText",
+        "saveToVariable",
+        "saveToVariableType"
+      ]
+    },
+    {
+      "type": "command",
+      "name": "serverinfo",
+      "guid": "a4b7e65f-e930-4672-9cae-af2dd1341bed",
+      "outputs": [
+        {
+          "label": "responses",
+          "connections": [
+            "3d264d09-0e31-4c68-a01a-43ff5cc86c93"
+          ]
+        }
+      ],
+      "x": 14,
+      "y": 1665
+    },
+    {
+      "type": "response",
+      "name": "infoInfo",
+      "guid": "3d264d09-0e31-4c68-a01a-43ff5cc86c93",
+      "reactionFields": [],
+      "embedfields": [],
+      "outputs": [
+        {
+          "label": "next response",
+          "connections": []
+        }
+      ],
+      "inputs": [
+        {
+          "label": "trigger",
+          "id": "a4b7e65f-e930-4672-9cae-af2dd1341bed"
+        }
+      ],
+      "x": 169,
+      "y": 1648,
+      "rtype": "Message",
+      "rsubtype": "Send Embed",
+      "formdata": [
+        "${dbsVars.CommandChannel.id}",
+        "000000",
+        "Server Info",
+        "",
+        "",
+        "",
+        "",
+        "**Name:** `${dbsVars.guild.name}`\n**Founder:** `@_928`\n**Region:** `${dbsVars.guild.region}`\n**Member:** `${dbsVars.guild.memberCount}`",
+        "https://cdn.discordapp.com/attachments/838913511206813786/839208469768831036/Screenshot_2021-05-04_004405.png",
+        "",
+        "KSA Bot | made by _927#5562",
+        "BOOL_TRUE@@",
+        "",
+        "temp"
+      ],
+      "formnames": [
+        "channelname",
+        "color",
+        "title",
+        "url",
+        "authorname",
+        "authorimageurl",
+        "authorlink",
+        "description",
+        "thumbnail",
+        "image",
+        "footer",
+        "timestamp",
+        "saveToVariable",
+        "saveToVariableType"
+      ]
+    },
+    {
+      "type": "command",
+      "name": "torben",
+      "guid": "cee3f7f7-499c-491f-8df9-e8bca6d4e2c1",
+      "outputs": [
+        {
+          "label": "responses",
+          "connections": [
+            "8d3872bf-b032-4785-89ca-eab145576eb7"
+          ]
+        }
+      ],
+      "x": 675,
+      "y": 1595
+    },
+    {
+      "type": "response",
+      "name": "torbenInfo",
+      "guid": "8d3872bf-b032-4785-89ca-eab145576eb7",
+      "reactionFields": [],
+      "embedfields": [],
+      "outputs": [
+        {
+          "label": "next response",
+          "connections": []
+        }
+      ],
+      "inputs": [
+        {
+          "label": "trigger",
+          "id": "cee3f7f7-499c-491f-8df9-e8bca6d4e2c1"
+        }
+      ],
+      "x": 669,
+      "y": 1484,
+      "rtype": "Message",
+      "rsubtype": "Send Embed",
+      "formdata": [
+        "${dbsVars.CommandChannel.id}",
+        "FFFFFF",
+        "Torben's socials",
+        "",
+        "",
+        "",
+        "",
+        "https://twitter.com/trbennn\nhttps://twitch.tv/torbeenn\nhttps://www.youtube.com/channel/UCHaz0yM-iLsGh5pKPTmzqaA\n",
+        "https://cdn.discordapp.com/emojis/802251209490169917.png?v=1&size=40",
+        "",
+        "KSA Bot | made by _927#5562",
+        "BOOL_TRUE@@",
+        "",
+        "temp"
+      ],
+      "formnames": [
+        "channelname",
+        "color",
+        "title",
+        "url",
+        "authorname",
+        "authorimageurl",
+        "authorlink",
+        "description",
+        "thumbnail",
+        "image",
+        "footer",
+        "timestamp",
+        "saveToVariable",
+        "saveToVariableType"
+      ]
+    },
+    {
+      "type": "command",
+      "name": "unban",
+      "guid": "7e4dbb4d-2706-42f2-a311-a3a931c63ea6",
+      "outputs": [
+        {
+          "label": "responses",
+          "connections": [
+            "2cb6afff-c814-4405-93c4-3069b8156a58"
+          ]
+        }
+      ],
+      "x": 903,
+      "y": 1528
+    },
+    {
+      "type": "response",
+      "name": "unbanNow",
+      "guid": "b765d654-fa38-4798-b46f-b837c4e9a549",
+      "reactionFields": [],
+      "embedfields": [],
+      "outputs": [
+        {
+          "label": "next response",
+          "connections": [
+            "d99737f7-ac45-4e1d-b2b7-02001af8c30b"
+          ]
+        }
+      ],
+      "inputs": [
+        {
+          "label": "trigger",
+          "id": "2cb6afff-c814-4405-93c4-3069b8156a58"
+        }
+      ],
+      "x": 1240,
+      "y": 1519,
+      "rtype": "User Action",
+      "rsubtype": "Unban",
+      "formdata": [
+        "$$id$$"
+      ],
+      "formnames": [
+        "id"
+      ]
+    },
+    {
+      "type": "response",
+      "name": "unbanMsg",
+      "guid": "d99737f7-ac45-4e1d-b2b7-02001af8c30b",
+      "reactionFields": [],
+      "embedfields": [],
+      "outputs": [
+        {
+          "label": "next response",
+          "connections": []
+        }
+      ],
+      "inputs": [
+        {
+          "label": "trigger",
+          "id": "b765d654-fa38-4798-b46f-b837c4e9a549"
+        }
+      ],
+      "x": 1405,
+      "y": 1522,
+      "rtype": "Message",
+      "rsubtype": "Send Embed",
+      "formdata": [
+        "807333306970013766",
+        "00FF08",
+        "Erfolgreich!",
+        "",
+        "",
+        "",
+        "",
+        "Der User wurde entbannt!",
+        "https://cdn.discordapp.com/emojis/706539806573985802.gif?v=1&size=40",
+        "",
+        "KSA Bot | made by _927#5562",
+        "false",
+        "",
+        "temp"
+      ],
+      "formnames": [
+        "channelname",
+        "color",
+        "title",
+        "url",
+        "authorname",
+        "authorimageurl",
+        "authorlink",
+        "description",
+        "thumbnail",
+        "image",
+        "footer",
+        "timestamp",
+        "saveToVariable",
+        "saveToVariableType"
+      ]
+    },
+    {
+      "type": "command",
+      "name": "stalk",
+      "guid": "51c4ae63-2097-4170-b6db-2372e9d9ee11",
+      "outputs": [
+        {
+          "label": "responses",
+          "connections": [
+            "a1d3fad9-f076-485b-b1b3-eb2da360607d"
+          ]
+        }
+      ],
+      "x": 399,
+      "y": 1678
+    },
+    {
+      "type": "response",
+      "name": "getUser.stalk",
+      "guid": "a1d3fad9-f076-485b-b1b3-eb2da360607d",
+      "reactionFields": [],
+      "embedfields": [],
+      "outputs": [
+        {
+          "label": "next response",
+          "connections": [
+            "d85e63d9-88d6-4dc9-8ab8-18fee520d8a1"
+          ]
+        }
+      ],
+      "inputs": [
+        {
+          "label": "trigger",
+          "id": "51c4ae63-2097-4170-b6db-2372e9d9ee11"
+        }
+      ],
+      "x": 555,
+      "y": 1678,
+      "rtype": "Variable",
+      "rsubtype": "Get Mentioned User",
+      "formdata": [
+        "stalkeduser",
+        "User",
+        "temp"
+      ],
+      "formnames": [
+        "varname",
+        "vartype",
+        "saveVarType"
+      ]
+    },
+    {
+      "type": "response",
+      "name": "stalkedInfo",
+      "guid": "d85e63d9-88d6-4dc9-8ab8-18fee520d8a1",
+      "reactionFields": [],
+      "embedfields": [],
+      "outputs": [
+        {
+          "label": "next response",
+          "connections": []
+        }
+      ],
+      "inputs": [
+        {
+          "label": "trigger",
+          "id": "a1d3fad9-f076-485b-b1b3-eb2da360607d"
+        }
+      ],
+      "x": 713,
+      "y": 1681,
+      "rtype": "Message",
+      "rsubtype": "Send Embed",
+      "formdata": [
+        "${dbsVars.CommandChannel.id}",
+        "E224FF",
+        "Stalked!",
+        "",
+        "",
+        "",
+        "",
+        "**User:**<@${tempVars.stalkeduser.id}>\n**ID:** ${tempVars.stalkeduser.id}     \n**Tag:** ${tempVars.stalkeduser.user.tag}\n**Nickname:** ${tempVars.stalkeduser.nickname}\n**Last Message:** ${tempVars.stalkeduser.lastMessage}\n**Avatar URL:** \n${tempVars.stalkeduser.user.avatarURL}",
+        "",
+        "${tempVars.stalkeduser.user.avatarURL}",
+        "KSA Bot | made by _927#5562",
+        "false",
+        "",
+        "temp"
+      ],
+      "formnames": [
+        "channelname",
+        "color",
+        "title",
+        "url",
+        "authorname",
+        "authorimageurl",
+        "authorlink",
+        "description",
+        "thumbnail",
+        "image",
+        "footer",
+        "timestamp",
+        "saveToVariable",
+        "saveToVariableType"
+      ]
+    },
+    {
+      "type": "command",
+      "name": "lvl",
+      "guid": "8ffe8467-a9be-4f6e-b746-4b7e75334a21",
+      "outputs": [
+        {
+          "label": "responses",
+          "connections": [
+            "33d91cf3-77e3-4ffc-b7fe-bf8838847c1f"
+          ]
+        }
+      ],
+      "x": 187,
+      "y": 1875
+    },
+    {
+      "type": "response",
+      "name": "getXp",
+      "guid": "33d91cf3-77e3-4ffc-b7fe-bf8838847c1f",
+      "reactionFields": [],
+      "embedfields": [],
+      "saveToVariable": "xp",
+      "saveToVariableType": "temp",
+      "outputs": [
+        {
+          "label": "next response",
+          "connections": [
+            "e2b6c52a-f766-414c-b5a7-dac851a33473"
+          ]
+        }
+      ],
+      "inputs": [
+        {
+          "label": "trigger",
+          "id": "8ffe8467-a9be-4f6e-b746-4b7e75334a21"
+        }
+      ],
+      "x": 357,
+      "y": 1870,
+      "rtype": "User Data",
+      "rsubtype": "Get User Data",
+      "formdata": [
+        "${dbsVars.CommandAuthor.id}",
+        "xp",
+        "xp",
+        "temp",
+        "User"
+      ],
+      "formnames": [
+        "user",
+        "field",
+        "varname",
+        "saveVarType",
+        "vartype"
+      ]
+    },
+    {
+      "type": "response",
+      "name": "getXp_1",
+      "guid": "e2b6c52a-f766-414c-b5a7-dac851a33473",
+      "reactionFields": [],
+      "embedfields": [],
+      "saveToVariable": "lvl",
+      "saveToVariableType": "temp",
+      "outputs": [
+        {
+          "label": "next response",
+          "connections": [
+            "d2fa3aa6-5cf2-49b0-939b-2517c87da7fd"
+          ]
+        }
+      ],
+      "inputs": [
+        {
+          "label": "trigger",
+          "id": "33d91cf3-77e3-4ffc-b7fe-bf8838847c1f"
+        }
+      ],
+      "x": 512,
+      "y": 1872,
+      "rtype": "User Data",
+      "rsubtype": "Get User Data",
+      "formdata": [
+        "${dbsVars.CommandAuthor.id}",
+        "lvl",
+        "lvl",
+        "temp",
+        "User"
+      ],
+      "formnames": [
+        "user",
+        "field",
+        "varname",
+        "saveVarType",
+        "vartype"
+      ]
+    },
+    {
+      "type": "response",
+      "name": "levelmsg",
+      "guid": "d2fa3aa6-5cf2-49b0-939b-2517c87da7fd",
+      "reactionFields": [],
+      "embedfields": [],
+      "outputs": [
+        {
+          "label": "next response",
+          "connections": []
+        }
+      ],
+      "inputs": [
+        {
+          "label": "trigger",
+          "id": "e2b6c52a-f766-414c-b5a7-dac851a33473"
+        }
+      ],
+      "x": 668,
+      "y": 1874,
+      "rtype": "Message",
+      "rsubtype": "Send Embed",
+      "formdata": [
+        "${dbsVars.CommandChannel.id}",
+        "006EFF",
+        "Dein Level...",
+        "",
+        "",
+        "",
+        "",
+        "<@${dbsVars.CommandAuthor.id}>\n\n**XP** :${tempVars.xp}\n**LEVEL**: ${tempVars.lvl}",
+        "https://cdn.discordapp.com/emojis/746427901515399351.gif?v=1&size=40",
+        "",
+        "",
+        "false",
+        "",
+        "temp"
+      ],
+      "formnames": [
+        "channelname",
+        "color",
+        "title",
+        "url",
+        "authorname",
+        "authorimageurl",
+        "authorlink",
+        "description",
+        "thumbnail",
+        "image",
+        "footer",
+        "timestamp",
+        "saveToVariable",
+        "saveToVariableType"
+      ]
+    },
+    {
+      "type": "command",
+      "name": "addlvl",
+      "guid": "ff68f6e7-3c85-48d7-bf77-92fe94367297",
+      "outputs": [
+        {
+          "label": "responses",
+          "connections": [
+            "0e8bb771-b526-4a9d-8455-55993e1d8f34"
+          ]
+        }
+      ],
+      "x": 174,
+      "y": 2056
+    },
+    {
+      "type": "response",
+      "name": "getUser.addlvl",
+      "guid": "01346457-b7d6-41da-bada-4c10d56774b3",
+      "reactionFields": [],
+      "embedfields": [],
+      "outputs": [
+        {
+          "label": "next response",
+          "connections": [
+            "4e9e856f-314a-4ea3-8d22-f707d6f97ce6"
+          ]
+        }
+      ],
+      "inputs": [
+        {
+          "label": "trigger",
+          "id": "0e8bb771-b526-4a9d-8455-55993e1d8f34"
+        }
+      ],
+      "x": 508,
+      "y": 2045,
+      "rtype": "Variable",
+      "rsubtype": "Get Mentioned User",
+      "formdata": [
+        "addlvluser",
+        "User",
+        "temp"
+      ],
+      "formnames": [
+        "varname",
+        "vartype",
+        "saveVarType"
+      ]
+    },
+    {
+      "type": "response",
+      "name": "getLevel",
+      "guid": "4e9e856f-314a-4ea3-8d22-f707d6f97ce6",
+      "reactionFields": [],
+      "embedfields": [],
+      "saveToVariable": "getlevel",
+      "saveToVariableType": "temp",
+      "outputs": [
+        {
+          "label": "next response",
+          "connections": [
+            "2c99287d-ac0a-45e8-9380-362612760209"
+          ]
+        }
+      ],
+      "inputs": [
+        {
+          "label": "trigger",
+          "id": "01346457-b7d6-41da-bada-4c10d56774b3"
+        }
+      ],
+      "x": 661,
+      "y": 2047,
+      "rtype": "Variable",
+      "rsubtype": "Store Value in Variable",
+      "formdata": [
+        "getlevel",
+        "Number",
+        "temp",
+        "2+"
+      ],
+      "formnames": [
+        "varname",
+        "vartype",
+        "saveVarType",
+        "param"
+      ]
+    },
+    {
+      "type": "response",
+      "name": "addlvlsuccess",
+      "guid": "84ea2606-4156-4484-bfc1-95d6f952c410",
+      "reactionFields": [],
+      "embedfields": [],
+      "outputs": [
+        {
+          "label": "next response",
+          "connections": []
+        }
+      ],
+      "inputs": [
+        {
+          "label": "trigger",
+          "id": "2c99287d-ac0a-45e8-9380-362612760209"
+        }
+      ],
+      "x": 968,
+      "y": 2051,
+      "rtype": "Message",
+      "rsubtype": "Send Embed",
+      "formdata": [
+        "${dbsVars.CommandChannel.id}",
+        "33FF00",
+        "Erfolgreich",
+        "",
+        "",
+        "",
+        "",
+        "Das Level von <@${tempVars.addlvluser.id}> wurden erfolgreich ${tempVars.getlevel} Level gegeben!",
+        "https://cdn.discordapp.com/emojis/695404895393546281.gif?v=1&size=40",
+        "",
+        "",
+        "false",
+        "",
+        "temp"
+      ],
+      "formnames": [
+        "channelname",
+        "color",
+        "title",
+        "url",
+        "authorname",
+        "authorimageurl",
+        "authorlink",
+        "description",
+        "thumbnail",
+        "image",
+        "footer",
+        "timestamp",
+        "saveToVariable",
+        "saveToVariableType"
+      ]
+    },
+    {
+      "type": "response",
+      "name": "addleveltouser",
+      "guid": "2c99287d-ac0a-45e8-9380-362612760209",
+      "reactionFields": [],
+      "embedfields": [],
+      "outputs": [
+        {
+          "label": "next response",
+          "connections": [
+            "84ea2606-4156-4484-bfc1-95d6f952c410"
+          ]
+        }
+      ],
+      "inputs": [
+        {
+          "label": "trigger",
+          "id": "4e9e856f-314a-4ea3-8d22-f707d6f97ce6"
+        }
+      ],
+      "x": 813,
+      "y": 2046,
+      "rtype": "User Data",
+      "rsubtype": "Edit User Data",
+      "formdata": [
+        "${tempVars.addlvluser.id}",
+        "lvl",
+        "+",
+        "${tempVars.getlevel}"
+      ],
+      "formnames": [
+        "user",
+        "field",
+        "oper",
+        "value"
+      ]
+    },
+    {
+      "type": "response",
+      "name": "createChannel",
+      "guid": "b69f72fe-e49e-4456-833b-13cbe7191084",
+      "reactionFields": [],
+      "embedfields": [],
+      "outputs": [
+        {
+          "label": "next response",
+          "connections": [
+            "2a25855c-653b-4878-b2c5-2e69129c7483"
+          ]
+        }
+      ],
+      "inputs": [
+        {
+          "label": "trigger",
+          "id": "dbc9fe90-81f6-49c0-bfe0-1ca5c778db9e"
+        }
+      ],
+      "x": 1422,
+      "y": 1763,
+      "rtype": "Channel Action",
+      "rsubtype": "Create Channel",
+      "formdata": [
+        "${tempVars.channelname}",
+        "",
+        "Voice",
+        "",
+        "temp"
+      ],
+      "formnames": [
+        "channelname",
+        "reason",
+        "channeltype",
+        "saveToVariable",
+        "saveToVariableType"
+      ]
+    },
+    {
+      "type": "command",
+      "name": "addchannel",
+      "guid": "69c6e7fb-e3f6-4383-a840-36b7214ae7a4",
+      "outputs": [
+        {
+          "label": "responses",
+          "connections": [
+            "59b0ed87-e6e8-4f33-99d4-677c6703f9ce"
+          ]
+        }
+      ],
+      "x": 942,
+      "y": 1779
+    },
+    {
+      "type": "response",
+      "name": "getChannelName",
+      "guid": "dbc9fe90-81f6-49c0-bfe0-1ca5c778db9e",
+      "reactionFields": [],
+      "embedfields": [],
+      "saveToVariable": "channelname",
+      "saveToVariableType": "temp",
+      "outputs": [
+        {
+          "label": "next response",
+          "connections": [
+            "b69f72fe-e49e-4456-833b-13cbe7191084"
+          ]
+        }
+      ],
+      "inputs": [
+        {
+          "label": "trigger",
+          "id": "59b0ed87-e6e8-4f33-99d4-677c6703f9ce"
+        }
+      ],
+      "x": 1266,
+      "y": 1758,
+      "rtype": "Variable",
+      "rsubtype": "Store Value in Variable",
+      "formdata": [
+        "channelname",
+        "Text",
+        "temp",
+        "1+"
+      ],
+      "formnames": [
+        "varname",
+        "vartype",
+        "saveVarType",
+        "param"
+      ]
+    },
+    {
+      "type": "response",
+      "name": "addchannel.msg",
+      "guid": "2a25855c-653b-4878-b2c5-2e69129c7483",
+      "reactionFields": [],
+      "embedfields": [],
+      "outputs": [
+        {
+          "label": "next response",
+          "connections": []
+        }
+      ],
+      "inputs": [
+        {
+          "label": "trigger",
+          "id": "b69f72fe-e49e-4456-833b-13cbe7191084"
+        }
+      ],
+      "x": 1580,
+      "y": 1757,
+      "rtype": "Message",
+      "rsubtype": "Send Embed",
+      "formdata": [
+        "${dbsVars.CommandChannel.id}",
+        "00FF22",
+        "Erfolgreich!",
+        "",
+        "",
+        "",
+        "",
+        "${tempVars.channelname} wurde erfolgreich erstellt",
+        "https://cdn.discordapp.com/emojis/712485245634740345.gif?v=1&size=40",
+        "",
+        "",
+        "false",
+        "",
+        "temp"
+      ],
+      "formnames": [
+        "channelname",
+        "color",
+        "title",
+        "url",
+        "authorname",
+        "authorimageurl",
+        "authorlink",
+        "description",
+        "thumbnail",
+        "image",
+        "footer",
+        "timestamp",
+        "saveToVariable",
+        "saveToVariableType"
+      ]
+    },
+    {
+      "type": "response",
+      "name": "checkPerms.unban",
+      "guid": "2cb6afff-c814-4405-93c4-3069b8156a58",
+      "reactionFields": [],
+      "embedfields": [],
+      "outputs": [
+        {
+          "label": "has perms",
+          "connections": [
+            "b765d654-fa38-4798-b46f-b837c4e9a549"
+          ]
+        },
+        {
+          "label": "doesn't have perms",
+          "connections": [
+            "7d7c3a0b-a25f-4f55-ad2e-f55d059840b8"
+          ]
+        }
+      ],
+      "inputs": [
+        {
+          "label": "trigger",
+          "id": "7e4dbb4d-2706-42f2-a311-a3a931c63ea6"
+        }
+      ],
+      "x": 1073,
+      "y": 1514,
+      "rtype": "User Action",
+      "rsubtype": "Check User Permissions",
+      "formdata": [
+        "${dbsVars.CommandAuthor.id}",
+        [
+          "BAN_MEMBERS"
+        ]
+      ],
+      "formnames": [
+        "user",
+        "permissions"
+      ]
+    },
+    {
+      "type": "response",
+      "name": "noPerms_5_1_1",
+      "guid": "7d7c3a0b-a25f-4f55-ad2e-f55d059840b8",
+      "embedfields": [],
+      "outputs": [
+        {
+          "label": "next response",
+          "connections": []
+        }
+      ],
+      "inputs": [
+        {
+          "label": "trigger",
+          "id": "2cb6afff-c814-4405-93c4-3069b8156a58"
+        }
+      ],
+      "x": 1245,
+      "y": 1634,
+      "rtype": "Message",
+      "rsubtype": "Send Embed",
+      "formdata": [
+        "${dbsVars.CommandChannel.id}",
+        "FF0000",
+        "Keine Rechte",
+        "",
+        "",
+        "",
+        "",
+        "Du hast nicht genug Rechte um diesen\nBefehl auszuführen",
+        "https://cdn.discordapp.com/emojis/746426628871291020.png?v=1&size=40",
+        "",
+        "",
+        "false",
+        "",
+        "temp"
+      ],
+      "formnames": [
+        "channelname",
+        "color",
+        "title",
+        "url",
+        "authorname",
+        "authorimageurl",
+        "authorlink",
+        "description",
+        "thumbnail",
+        "image",
+        "footer",
+        "timestamp",
+        "saveToVariable",
+        "saveToVariableType"
+      ]
+    },
+    {
+      "type": "response",
+      "name": "checkPerms.addchannel",
+      "guid": "59b0ed87-e6e8-4f33-99d4-677c6703f9ce",
+      "reactionFields": [],
+      "embedfields": [],
+      "outputs": [
+        {
+          "label": "has perms",
+          "connections": [
+            "dbc9fe90-81f6-49c0-bfe0-1ca5c778db9e"
+          ]
+        },
+        {
+          "label": "doesn't have perms",
+          "connections": [
+            "dfeaf988-202a-4cf3-95ba-9be541653d1a"
+          ]
+        }
+      ],
+      "inputs": [
+        {
+          "label": "trigger",
+          "id": "69c6e7fb-e3f6-4383-a840-36b7214ae7a4"
+        }
+      ],
+      "x": 1103,
+      "y": 1751,
+      "rtype": "User Action",
+      "rsubtype": "Check User Permissions",
+      "formdata": [
+        "${dbsVars.CommandAuthor.id}",
+        [
+          "ADMINISTRATOR"
+        ]
+      ],
+      "formnames": [
+        "user",
+        "permissions"
+      ]
+    },
+    {
+      "type": "response",
+      "name": "noPerms_5_1_1_1",
+      "guid": "dfeaf988-202a-4cf3-95ba-9be541653d1a",
+      "embedfields": [],
+      "outputs": [
+        {
+          "label": "next response",
+          "connections": []
+        }
+      ],
+      "inputs": [
+        {
+          "label": "trigger",
+          "id": "59b0ed87-e6e8-4f33-99d4-677c6703f9ce"
+        }
+      ],
+      "x": 1274,
+      "y": 1892,
+      "rtype": "Message",
+      "rsubtype": "Send Embed",
+      "formdata": [
+        "${dbsVars.CommandChannel.id}",
+        "FF0000",
+        "Keine Rechte",
+        "",
+        "",
+        "",
+        "",
+        "Du hast nicht genug Rechte um diesen\nBefehl auszuführen",
+        "https://cdn.discordapp.com/emojis/746426628871291020.png?v=1&size=40",
+        "",
+        "",
+        "false",
+        "",
+        "temp"
+      ],
+      "formnames": [
+        "channelname",
+        "color",
+        "title",
+        "url",
+        "authorname",
+        "authorimageurl",
+        "authorlink",
+        "description",
+        "thumbnail",
+        "image",
+        "footer",
+        "timestamp",
+        "saveToVariable",
+        "saveToVariableType"
+      ]
+    },
+    {
+      "type": "response",
+      "name": "checkPerms.addlvl",
+      "guid": "0e8bb771-b526-4a9d-8455-55993e1d8f34",
+      "embedfields": [],
+      "outputs": [
+        {
+          "label": "has perms",
+          "connections": [
+            "01346457-b7d6-41da-bada-4c10d56774b3"
+          ]
+        },
+        {
+          "label": "doesn't have perms",
+          "connections": [
+            "69a62bb3-68a9-4d53-958c-711c9a393570"
+          ]
+        }
+      ],
+      "inputs": [
+        {
+          "label": "trigger",
+          "id": "ff68f6e7-3c85-48d7-bf77-92fe94367297"
+        }
+      ],
+      "x": 333,
+      "y": 2042,
+      "rtype": "User Action",
+      "rsubtype": "Check User Permissions"
+    },
+    {
+      "type": "response",
+      "name": "noPerms_5_4",
+      "guid": "e32f69b2-b780-41f2-acb5-85f26905d7e2",
+      "embedfields": [],
+      "outputs": [
+        {
+          "label": "next response",
+          "connections": []
+        }
+      ],
+      "inputs": [
+        {
+          "label": "trigger",
+          "id": "0cea8776-0705-4b8b-996d-b2380d77fdf1"
+        }
+      ],
+      "x": 14,
+      "y": 1768,
+      "rtype": "Message",
+      "rsubtype": "Send Embed",
+      "formdata": [
+        "${dbsVars.CommandChannel.id}",
+        "FF0000",
+        "Keine Rechte",
+        "",
+        "",
+        "",
+        "",
+        "Du hast nicht genug Rechte um diesen\nBefehl auszuführen",
+        "https://cdn.discordapp.com/emojis/746426628871291020.png?v=1&size=40",
+        "",
+        "",
+        "false",
+        "",
+        "temp"
+      ],
+      "formnames": [
+        "channelname",
+        "color",
+        "title",
+        "url",
+        "authorname",
+        "authorimageurl",
+        "authorlink",
+        "description",
+        "thumbnail",
+        "image",
+        "footer",
+        "timestamp",
+        "saveToVariable",
+        "saveToVariableType"
+      ]
+    },
+    {
+      "type": "response",
+      "name": "noPerms_5_5",
+      "guid": "69a62bb3-68a9-4d53-958c-711c9a393570",
+      "embedfields": [],
+      "outputs": [
+        {
+          "label": "next response",
+          "connections": []
+        }
+      ],
+      "inputs": [
+        {
+          "label": "trigger",
+          "id": "0e8bb771-b526-4a9d-8455-55993e1d8f34"
+        }
+      ],
+      "x": 512,
+      "y": 2166,
+      "rtype": "Message",
+      "rsubtype": "Send Embed",
+      "formdata": [
+        "${dbsVars.CommandChannel.id}",
+        "FF0000",
+        "Keine Rechte",
+        "",
+        "",
+        "",
+        "",
+        "Du hast nicht genug Rechte um diesen\nBefehl auszuführen",
+        "https://cdn.discordapp.com/emojis/746426628871291020.png?v=1&size=40",
+        "",
+        "",
+        "false",
+        "",
+        "temp"
+      ],
+      "formnames": [
+        "channelname",
+        "color",
+        "title",
+        "url",
+        "authorname",
+        "authorimageurl",
+        "authorlink",
+        "description",
+        "thumbnail",
+        "image",
+        "footer",
+        "timestamp",
+        "saveToVariable",
+        "saveToVariableType"
+      ]
+    },
+    {
+      "type": "response",
+      "name": "checkPerms.userid",
+      "guid": "0cea8776-0705-4b8b-996d-b2380d77fdf1",
+      "embedfields": [],
+      "outputs": [
+        {
+          "label": "has perms",
+          "connections": [
+            "c4779713-ac15-4698-8298-799d1469ef1a"
+          ]
+        },
+        {
+          "label": "doesn't have perms",
+          "connections": [
+            "e32f69b2-b780-41f2-acb5-85f26905d7e2"
+          ]
+        }
+      ],
+      "inputs": [
+        {
+          "label": "trigger",
+          "id": "092666d3-1ab0-4f20-bf34-2a13a68e6877"
+        }
+      ],
+      "x": 163,
+      "y": 1473,
+      "rtype": "User Action",
+      "rsubtype": "Check User Permissions"
+    }
+  ]
+}

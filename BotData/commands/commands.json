@@ -1,0 +1,1072 @@
+{
+  "command": [
+    {
+      "name": "kick",
+      "actions": [
+        {
+          "name": "checkPerms.kick",
+          "category": "User Action",
+          "type": "Check User Permissions",
+          "trueActions": [
+            {
+              "name": "getUser",
+              "category": "Variable",
+              "type": "Get Mentioned User",
+              "varname": "kickuser",
+              "vartype": "User",
+              "savevartype": "temp"
+            },
+            {
+              "name": "kickReason",
+              "category": "Variable",
+              "type": "Store Value in Variable",
+              "varname": "kickreason",
+              "vartype": "Text",
+              "savevartype": "temp",
+              "param": "2+"
+            },
+            {
+              "name": "kickmsg",
+              "category": "Message",
+              "type": "Send Embed",
+              "channelname": "807333306970013766",
+              "color": "FF0000",
+              "title": "Kicked out!",
+              "url": "",
+              "authorname": "",
+              "authorimageurl": "",
+              "authorlink": "",
+              "description": "User: <@${tempVars.kickuser.id}>\nReason: ${tempVars.kickreason}\nModerator: <@${dbsVars.CommandAuthor.id}>",
+              "thumbnail": "${tempVars.kickuser.user.avatarURL}",
+              "image": "",
+              "footer": "KSA Bot | made by _927#5562",
+              "timestamp": "BOOL_TRUE@@",
+              "savetovariable": "",
+              "savetovariabletype": "temp"
+            },
+            {
+              "name": "kick.user",
+              "category": "User Action",
+              "type": "Kick User",
+              "user": "${tempVars.kickuser.id}",
+              "reason": "${tempVars.kick.reason}"
+            }
+          ],
+          "falseActions": [
+            {
+              "name": "noPerms_1",
+              "category": "Message",
+              "type": "Send Embed",
+              "channelname": "${dbsVars.CommandChannel.id}",
+              "color": "FF0000",
+              "title": "Keine Rechte",
+              "url": "",
+              "authorname": "",
+              "authorimageurl": "",
+              "authorlink": "",
+              "description": "Du hast nicht genug Rechte um diesen\nBefehl auszuführen",
+              "thumbnail": "https://cdn.discordapp.com/emojis/746426628871291020.png?v=1&size=40",
+              "image": "",
+              "footer": "",
+              "timestamp": "false",
+              "savetovariable": "",
+              "savetovariabletype": "temp"
+            }
+          ],
+          "user": "${dbsVars.CommandAuthor.id}",
+          "permissions": [
+            "KICK_MEMBERS"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "ban",
+      "actions": [
+        {
+          "name": "checkPerms.ban",
+          "category": "User Action",
+          "type": "Check User Permissions",
+          "trueActions": [
+            {
+              "name": "getUser.ban",
+              "category": "Variable",
+              "type": "Get Mentioned User",
+              "varname": "banuser",
+              "vartype": "User",
+              "savevartype": "temp"
+            },
+            {
+              "name": "getBanTime",
+              "category": "Variable",
+              "type": "Store Value in Variable",
+              "varname": "bantime",
+              "vartype": "Number",
+              "savevartype": "temp",
+              "param": "2"
+            },
+            {
+              "name": "banReason",
+              "category": "Variable",
+              "type": "Store Value in Variable",
+              "varname": "banreason",
+              "vartype": "Text",
+              "savevartype": "temp",
+              "param": "3+"
+            },
+            {
+              "name": "BanMessage",
+              "category": "Message",
+              "type": "Send Embed",
+              "channelname": "807333306970013766",
+              "color": "FF0000",
+              "title": "Banned!",
+              "url": "",
+              "authorname": "",
+              "authorimageurl": "",
+              "authorlink": "",
+              "description": "User: <@${tempVars.banuser.id}>\nTime: ${tempVars.bantime} Days\nReason: ${tempVars.banreason}\nModerator:<@${dbsVars.CommandAuthor.id}>",
+              "thumbnail": "${tempVars.banuser.user.avatarURL}",
+              "image": "",
+              "footer": "KSA Bot | made by _927#5562",
+              "timestamp": "BOOL_TRUE@@",
+              "savetovariable": "",
+              "savetovariabletype": "temp"
+            },
+            {
+              "name": "banUser",
+              "category": "User Action",
+              "type": "Ban User",
+              "user": "${tempVars.banuser.id}",
+              "reason": "${tempVars.banreason}",
+              "days": "${tempVars.bantime}"
+            }
+          ],
+          "falseActions": [
+            {
+              "name": "noPerms",
+              "category": "Message",
+              "type": "Send Embed",
+              "channelname": "${dbsVars.CommandChannel.id}",
+              "color": "FF0000",
+              "title": "Keine Rechte",
+              "url": "",
+              "authorname": "",
+              "authorimageurl": "",
+              "authorlink": "",
+              "description": "Du hast nicht genug Rechte um diesen\nBefehl auszuführen",
+              "thumbnail": "https://cdn.discordapp.com/emojis/746426628871291020.png?v=1&size=40",
+              "image": "",
+              "footer": "",
+              "timestamp": "false",
+              "savetovariable": "",
+              "savetovariabletype": "temp"
+            }
+          ],
+          "user": "${dbsVars.CommandAuthor.id}",
+          "permissions": [
+            "BAN_MEMBERS"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "clear",
+      "actions": [
+        {
+          "name": "checkPerms.clear",
+          "category": "User Action",
+          "type": "Check User Permissions",
+          "trueActions": [
+            {
+              "name": "clearNumber",
+              "category": "Variable",
+              "type": "Store Value in Variable",
+              "varname": "clearnumber",
+              "vartype": "Number",
+              "savevartype": "temp",
+              "param": "1"
+            },
+            {
+              "name": "clearNow",
+              "category": "Channel Action",
+              "type": "Delete All Messages",
+              "channelname": "${dbsVars.CommandChannel.id}",
+              "msgcount": "${tempVars.clearnumber}"
+            },
+            {
+              "name": "clearLog",
+              "category": "Message",
+              "type": "Send Embed",
+              "channelname": "${dbsVars.CommandChannel.id}",
+              "color": "4DFF00",
+              "title": "Erfolgreich!",
+              "url": "",
+              "authorname": "",
+              "authorimageurl": "",
+              "authorlink": "",
+              "description": "`${tempVars.clearnumber}`  **Nachrichten wurden entfernt**",
+              "thumbnail": "https://cdn.discordapp.com/emojis/592473629787422723.gif?v=1&size=40",
+              "image": "",
+              "footer": "KSA Bot | made by _927#5562",
+              "timestamp": "false",
+              "savetovariable": "",
+              "savetovariabletype": "temp"
+            }
+          ],
+          "falseActions": [
+            {
+              "name": "noPerms_2",
+              "category": "Message",
+              "type": "Send Embed",
+              "channelname": "${dbsVars.CommandChannel.id}",
+              "color": "FF0000",
+              "title": "Keine Rechte",
+              "url": "",
+              "authorname": "",
+              "authorimageurl": "",
+              "authorlink": "",
+              "description": "Du hast nicht genug Rechte um diesen\nBefehl auszuführen",
+              "thumbnail": "https://cdn.discordapp.com/emojis/746426628871291020.png?v=1&size=40",
+              "image": "",
+              "footer": "",
+              "timestamp": "false",
+              "savetovariable": "",
+              "savetovariabletype": "temp"
+            }
+          ],
+          "user": "${dbsVars.CommandAuthor.id}",
+          "permissions": [
+            "PRIORITY_SPEAKER"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "warn",
+      "actions": [
+        {
+          "name": "checkPerms.warn",
+          "category": "User Action",
+          "type": "Check User Permissions",
+          "trueActions": [
+            {
+              "name": "getUser.warn",
+              "category": "Variable",
+              "type": "Get Mentioned User",
+              "varname": "warnuser",
+              "vartype": "User",
+              "savevartype": "temp"
+            },
+            {
+              "name": "getWarnReason",
+              "category": "Variable",
+              "type": "Store Value in Variable",
+              "varname": "warnreason",
+              "vartype": "Text",
+              "savevartype": "temp",
+              "param": "2+"
+            },
+            {
+              "name": "warnLogs",
+              "category": "User Data",
+              "type": "Edit User Data",
+              "user": "${tempVars.warnuser.id}",
+              "field": "warns",
+              "oper": "+",
+              "value": "1"
+            },
+            {
+              "name": "warnLogChannel",
+              "category": "Message",
+              "type": "Send Embed",
+              "channelname": "807333306970013766",
+              "color": "FFF700",
+              "title": "Warnung!",
+              "url": "",
+              "authorname": "",
+              "authorimageurl": "",
+              "authorlink": "",
+              "description": "User: <@${tempVars.warnuser.id}>\nReason: ${tempVars.warnreason}\nModerator: <@${dbsVars.CommandAuthor.id}>",
+              "thumbnail": "${tempVars.warnuser.user.avatarURL}",
+              "image": "",
+              "footer": "KSA Bot | made by _927#5562",
+              "timestamp": "false",
+              "savetovariable": "",
+              "savetovariabletype": "temp"
+            },
+            {
+              "name": "warnInfoUser",
+              "category": "Message",
+              "type": "Send Embed",
+              "channelname": "${dbsVars.CommandChannel.id}",
+              "color": "1AFF00",
+              "title": "Erfolgreich!",
+              "url": "",
+              "authorname": "",
+              "authorimageurl": "",
+              "authorlink": "",
+              "description": "<@${tempVars.warnuser.id}> \ndu wurdest **gewarnt**!\n\nReason: ${tempVars.warnreason}",
+              "thumbnail": "https://cdn.discordapp.com/emojis/583647419850424321.png?v=1&size=40",
+              "image": "",
+              "footer": "KSA Bot | made by _927#5562",
+              "timestamp": "BOOL_TRUE@@",
+              "savetovariable": "",
+              "savetovariabletype": "temp"
+            }
+          ],
+          "falseActions": [
+            {
+              "name": "noPerms_5",
+              "category": "Message",
+              "type": "Send Embed",
+              "channelname": "${dbsVars.CommandChannel.id}",
+              "color": "FF0000",
+              "title": "Keine Rechte",
+              "url": "",
+              "authorname": "",
+              "authorimageurl": "",
+              "authorlink": "",
+              "description": "Du hast nicht genug Rechte um diesen\nBefehl auszuführen",
+              "thumbnail": "https://cdn.discordapp.com/emojis/746426628871291020.png?v=1&size=40",
+              "image": "",
+              "footer": "",
+              "timestamp": "false",
+              "savetovariable": "",
+              "savetovariabletype": "temp"
+            }
+          ],
+          "user": "${dbsVars.CommandAuthor.id}",
+          "permissions": [
+            "PRIORITY_SPEAKER"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "report",
+      "actions": [
+        {
+          "name": "getUser.report",
+          "category": "Variable",
+          "type": "Get Mentioned User",
+          "varname": "reportuser",
+          "vartype": "User",
+          "savevartype": "temp"
+        },
+        {
+          "name": "reportReason",
+          "category": "Variable",
+          "type": "Store Value in Variable",
+          "varname": "reportreason",
+          "vartype": "Text",
+          "savevartype": "temp",
+          "param": "2+"
+        },
+        {
+          "name": "reportLogInfo",
+          "category": "Message",
+          "type": "Send Embed",
+          "channelname": "807388267388993559",
+          "color": "FF0000",
+          "title": "Report",
+          "url": "",
+          "authorname": "",
+          "authorimageurl": "",
+          "authorlink": "",
+          "description": "Report von: <@${dbsVars.CommandAuthor.id}>\nReport für: <@${tempVars.reportuser.id}>\nGründ des Reports: ${tempVars.reportreason}",
+          "thumbnail": "https://cdn.discordapp.com/emojis/493136361797451798.gif?v=1&size=40",
+          "image": "",
+          "footer": "KSA Bot | made by _927#5562",
+          "timestamp": "BOOL_TRUE@@",
+          "savetovariable": "",
+          "savetovariabletype": "temp"
+        },
+        {
+          "name": "reportInfoUser",
+          "category": "Message",
+          "type": "Send Embed",
+          "channelname": "${dbsVars.CommandChannel.id}",
+          "color": "4DFF00",
+          "title": "Erfolgreich!",
+          "url": "",
+          "authorname": "",
+          "authorimageurl": "",
+          "authorlink": "",
+          "description": "Du hast <@${tempVars.reportuser.id}>\nfür \"${tempVars.reportreason}\" reportet!",
+          "thumbnail": "https://cdn.discordapp.com/emojis/512903857270161408.gif?v=1&size=40",
+          "image": "",
+          "footer": "KSA Bot | made by _927#5562",
+          "timestamp": "false",
+          "savetovariable": "",
+          "savetovariabletype": "temp"
+        }
+      ]
+    },
+    {
+      "name": "mute",
+      "actions": [
+        {
+          "name": "checkPerms.mute",
+          "category": "User Action",
+          "type": "Check User Permissions",
+          "trueActions": [
+            {
+              "name": "getUser.mute",
+              "category": "Variable",
+              "type": "Get Mentioned User",
+              "varname": "muteuser",
+              "vartype": "User",
+              "savevartype": "temp"
+            },
+            {
+              "name": "muteReason",
+              "category": "Variable",
+              "type": "Store Value in Variable",
+              "varname": "mutereason",
+              "vartype": "Text",
+              "savevartype": "temp",
+              "param": "2+"
+            },
+            {
+              "name": "muteInfoUser",
+              "category": "Message",
+              "type": "Send Embed",
+              "channelname": "${dbsVars.CommandChannel.id}",
+              "color": "22FF00",
+              "title": "Erfolgreich!",
+              "url": "",
+              "authorname": "",
+              "authorimageurl": "",
+              "authorlink": "",
+              "description": "<@${tempVars.muteuser.id}> \nwurde erfolgreich **gemutet**",
+              "thumbnail": "https://cdn.discordapp.com/emojis/583646649621151746.png?v=1&size=40",
+              "image": "",
+              "footer": "KSA Bot | made by _927#5562",
+              "timestamp": "false",
+              "savetovariable": "",
+              "savetovariabletype": "temp"
+            },
+            {
+              "name": "muteLogs",
+              "category": "Message",
+              "type": "Send Embed",
+              "channelname": "807333306970013766",
+              "color": "FF9100",
+              "title": "Muted!",
+              "url": "",
+              "authorname": "",
+              "authorimageurl": "",
+              "authorlink": "",
+              "description": "User: <@${tempVars.muteuser.id}>\nReason: ${tempVars.mutereason}\nModerator: <@${dbsVars.CommandAuthor.id}>",
+              "thumbnail": "${tempVars.muteuser.user.avatarURL}",
+              "image": "",
+              "footer": "KSA Bot | made by _927#5562",
+              "timestamp": "false",
+              "savetovariable": "",
+              "savetovariabletype": "temp"
+            },
+            {
+              "name": "muteGiveRole",
+              "category": "User Action",
+              "type": "Add Role to User",
+              "user": "${tempVars.muteuser.id}",
+              "rolename": "muted"
+            }
+          ],
+          "falseActions": [
+            {
+              "name": "noPerms_4",
+              "category": "Message",
+              "type": "Send Embed",
+              "channelname": "${dbsVars.CommandChannel.id}",
+              "color": "FF0000",
+              "title": "Keine Rechte",
+              "url": "",
+              "authorname": "",
+              "authorimageurl": "",
+              "authorlink": "",
+              "description": "Du hast nicht genug Rechte um diesen\nBefehl auszuführen",
+              "thumbnail": "https://cdn.discordapp.com/emojis/746426628871291020.png?v=1&size=40",
+              "image": "",
+              "footer": "",
+              "timestamp": "false",
+              "savetovariable": "",
+              "savetovariabletype": "temp"
+            }
+          ],
+          "user": "${dbsVars.CommandAuthor.id}",
+          "permissions": [
+            "MUTE_MEMBERS"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "funny",
+      "actions": [
+        {
+          "name": "funnyMsg",
+          "category": "Message",
+          "type": "Send Embed",
+          "channelname": "${dbsVars.CommandChannel.id}",
+          "color": "00CCFF",
+          "title": "Witzig",
+          "url": "",
+          "authorname": "",
+          "authorimageurl": "",
+          "authorlink": "",
+          "description": "Du warst richtig witzig",
+          "thumbnail": "https://cdn.discordapp.com/emojis/781605349182013460.png?v=1&size=40",
+          "image": "",
+          "footer": "KSA Bot | made by _927#5562",
+          "timestamp": "false",
+          "savetovariable": "",
+          "savetovariabletype": "temp"
+        }
+      ]
+    },
+    {
+      "name": "warncheck",
+      "actions": [
+        {
+          "name": "warncheckGetUser",
+          "category": "Variable",
+          "type": "Get Mentioned User",
+          "varname": "warncheckuser",
+          "vartype": "User",
+          "savevartype": "temp"
+        },
+        {
+          "name": "warncheckUser",
+          "category": "User Data",
+          "type": "Check User Data",
+          "trueActions": [
+            {
+              "name": "warnCheckFail",
+              "category": "Message",
+              "type": "Send Embed",
+              "channelname": "${dbsVars.CommandChannel.id}",
+              "color": "FF0000",
+              "title": "Oh oh...",
+              "url": "",
+              "authorname": "",
+              "authorimageurl": "",
+              "authorlink": "",
+              "description": "<@${tempVars.warncheckuser.id}>\nhat mehr als 2 Warnungen!\n\n<@${tempVars.warncheckuser.id}> wurde gemuted!",
+              "thumbnail": "${tempVars.warncheckuser.user.avatarURL}",
+              "image": "https://cdn.discordapp.com/emojis/746426626266497087.gif?v=1&size=40",
+              "footer": "KSA Bot | made by _927#5562",
+              "timestamp": "false",
+              "savetovariable": "",
+              "savetovariabletype": "temp"
+            },
+            {
+              "name": "muteUser.warncheck",
+              "category": "User Action",
+              "type": "Add Role to User",
+              "user": "${tempVars.warncheckuser.id}",
+              "rolename": "muted"
+            }
+          ],
+          "falseActions": [
+            {
+              "name": "warnCheckSucces",
+              "category": "Message",
+              "type": "Send Embed",
+              "channelname": "${dbsVars.CommandChannel.id}",
+              "color": "00FF08",
+              "title": "Alles Safe!",
+              "url": "",
+              "authorname": "",
+              "authorimageurl": "",
+              "authorlink": "",
+              "description": "<@${tempVars.warncheckuser.id}>\n hat unter 3 Warnungen!",
+              "thumbnail": "${tempVars.warncheckuser.user.avatarURL}",
+              "image": "https://cdn.discordapp.com/emojis/746427855336112201.gif?v=1&size=40",
+              "footer": "KSA Bot | made by _927#5562",
+              "timestamp": "false",
+              "savetovariable": "",
+              "savetovariabletype": "temp"
+            }
+          ],
+          "user": "${tempVars.warncheckuser.id}",
+          "field": "warns",
+          "compare": "greater than",
+          "value": "2"
+        }
+      ]
+    },
+    {
+      "name": "removewarns",
+      "actions": [
+        {
+          "name": "checkPerms.removewarns",
+          "category": "User Action",
+          "type": "Check User Permissions",
+          "trueActions": [
+            {
+              "name": "removewarnsuser",
+              "category": "Variable",
+              "type": "Get Mentioned User",
+              "varname": "removewarnsuser",
+              "vartype": "User",
+              "savevartype": "temp"
+            },
+            {
+              "name": "removeWarns",
+              "category": "User Data",
+              "type": "Set User Data",
+              "user": "${tempVars.removewarnsuser.id}",
+              "field": "warns",
+              "fieldvalue": "0"
+            },
+            {
+              "name": "warnsremoved",
+              "category": "Message",
+              "type": "Send Embed",
+              "channelname": "${dbsVars.CommandChannel.id}",
+              "color": "11FF00",
+              "title": "Erfolgreich!",
+              "url": "",
+              "authorname": "",
+              "authorimageurl": "",
+              "authorlink": "",
+              "description": "Alle Warnungen von <@${tempVars.removewarnsuser.id}> \nwurden **gelöscht**",
+              "thumbnail": "${tempVars.removewarnsuser.user.avatarURL}",
+              "image": "https://cdn.discordapp.com/emojis/780338281572859945.png?v=1&size=40",
+              "footer": "KSA Bot | made by _927#5562",
+              "timestamp": "BOOL_TRUE@@",
+              "savetovariable": "",
+              "savetovariabletype": "temp"
+            }
+          ],
+          "falseActions": [
+            {
+              "name": "noPerms_5_2",
+              "category": "Message",
+              "type": "Send Embed",
+              "channelname": "${dbsVars.CommandChannel.id}",
+              "color": "FF0000",
+              "title": "Keine Rechte",
+              "url": "",
+              "authorname": "",
+              "authorimageurl": "",
+              "authorlink": "",
+              "description": "Du hast nicht genug Rechte um diesen\nBefehl auszuführen",
+              "thumbnail": "https://cdn.discordapp.com/emojis/746426628871291020.png?v=1&size=40",
+              "image": "",
+              "footer": "",
+              "timestamp": "false",
+              "savetovariable": "",
+              "savetovariabletype": "temp"
+            }
+          ],
+          "user": "${dbsVars.CommandAuthor.id}",
+          "permissions": [
+            "PRIORITY_SPEAKER"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "userid",
+      "actions": []
+    },
+    {
+      "name": "unmute",
+      "actions": [
+        {
+          "name": "checkPerms.unmute",
+          "category": "User Action",
+          "type": "Check User Permissions",
+          "trueActions": [
+            {
+              "name": "unmuteGetUser",
+              "category": "Variable",
+              "type": "Get Mentioned User",
+              "varname": "unmuteuser",
+              "vartype": "User",
+              "savevartype": "temp"
+            },
+            {
+              "name": "unmuteMsg",
+              "category": "Message",
+              "type": "Send Embed",
+              "channelname": "${dbsVars.CommandChannel.id}",
+              "color": "00FF11",
+              "title": "Unmuted!",
+              "url": "",
+              "authorname": "",
+              "authorimageurl": "",
+              "authorlink": "",
+              "description": "Herzlichen Glückwunsch!\n<@${tempVars.unmuteuser.id}> du wurdest unmuted.",
+              "thumbnail": "${tempVars.unmuteuser.user.avatarURL}",
+              "image": "https://cdn.discordapp.com/emojis/780552176468099102.png?v=1&size=40",
+              "footer": "KSA Bot | made by _927#5562",
+              "timestamp": "BOOL_TRUE@@",
+              "savetovariable": "",
+              "savetovariabletype": "temp"
+            },
+            {
+              "name": "unmuteRole",
+              "category": "User Action",
+              "type": "Remove Role From User",
+              "user": "${tempVars.unmuteuser.id}",
+              "rolename": "muted",
+              "reason": "User got unmuted by moderator"
+            }
+          ],
+          "falseActions": [
+            {
+              "name": "noPerms_5_1",
+              "category": "Message",
+              "type": "Send Embed",
+              "channelname": "${dbsVars.CommandChannel.id}",
+              "color": "FF0000",
+              "title": "Keine Rechte",
+              "url": "",
+              "authorname": "",
+              "authorimageurl": "",
+              "authorlink": "",
+              "description": "Du hast nicht genug Rechte um diesen\nBefehl auszuführen",
+              "thumbnail": "https://cdn.discordapp.com/emojis/746426628871291020.png?v=1&size=40",
+              "image": "",
+              "footer": "",
+              "timestamp": "false",
+              "savetovariable": "",
+              "savetovariabletype": "temp"
+            }
+          ],
+          "user": "${dbsVars.CommandAuthor.id}",
+          "permissions": [
+            "PRIORITY_SPEAKER"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "ping",
+      "actions": [
+        {
+          "name": "getUser.ping",
+          "category": "Variable",
+          "type": "Get Mentioned User",
+          "varname": "pinguser",
+          "vartype": "User",
+          "savevartype": "temp"
+        },
+        {
+          "name": "pingUser",
+          "category": "Message",
+          "type": "Send Message",
+          "channelname": "${dbsVars.CommandChannel.id}",
+          "messagetext": "<@${tempVars.pinguser.id}>",
+          "savetovariable": "",
+          "savetovariabletype": "temp"
+        },
+        {
+          "name": "pingUser_1",
+          "category": "Message",
+          "type": "Send Message",
+          "channelname": "${dbsVars.CommandChannel.id}",
+          "messagetext": "<@${tempVars.pinguser.id}>",
+          "savetovariable": "",
+          "savetovariabletype": "temp"
+        },
+        {
+          "name": "pingUser_2",
+          "category": "Message",
+          "type": "Send Message",
+          "channelname": "${dbsVars.CommandChannel.id}",
+          "messagetext": "<@${tempVars.pinguser.id}>",
+          "savetovariable": "",
+          "savetovariabletype": "temp"
+        },
+        {
+          "name": "pingUser_3",
+          "category": "Message",
+          "type": "Send Message",
+          "channelname": "${dbsVars.CommandChannel.id}",
+          "messagetext": "<@${tempVars.pinguser.id}>",
+          "savetovariable": "",
+          "savetovariabletype": "temp"
+        },
+        {
+          "name": "pingUser_4",
+          "category": "Message",
+          "type": "Send Message",
+          "channelname": "${dbsVars.CommandChannel.id}",
+          "messagetext": "<@${tempVars.pinguser.id}>",
+          "savetovariable": "",
+          "savetovariabletype": "temp"
+        }
+      ]
+    },
+    {
+      "name": "serverinfo",
+      "actions": [
+        {
+          "name": "infoInfo",
+          "category": "Message",
+          "type": "Send Embed",
+          "channelname": "${dbsVars.CommandChannel.id}",
+          "color": "000000",
+          "title": "Server Info",
+          "url": "",
+          "authorname": "",
+          "authorimageurl": "",
+          "authorlink": "",
+          "description": "**Name:** `${dbsVars.guild.name}`\n**Founder:** `@_928`\n**Region:** `${dbsVars.guild.region}`\n**Member:** `${dbsVars.guild.memberCount}`",
+          "thumbnail": "https://cdn.discordapp.com/attachments/838913511206813786/839208469768831036/Screenshot_2021-05-04_004405.png",
+          "image": "",
+          "footer": "KSA Bot | made by _927#5562",
+          "timestamp": "BOOL_TRUE@@",
+          "savetovariable": "",
+          "savetovariabletype": "temp"
+        }
+      ]
+    },
+    {
+      "name": "torben",
+      "actions": [
+        {
+          "name": "torbenInfo",
+          "category": "Message",
+          "type": "Send Embed",
+          "channelname": "${dbsVars.CommandChannel.id}",
+          "color": "FFFFFF",
+          "title": "Torben's socials",
+          "url": "",
+          "authorname": "",
+          "authorimageurl": "",
+          "authorlink": "",
+          "description": "https://twitter.com/trbennn\nhttps://twitch.tv/torbeenn\nhttps://www.youtube.com/channel/UCHaz0yM-iLsGh5pKPTmzqaA\n",
+          "thumbnail": "https://cdn.discordapp.com/emojis/802251209490169917.png?v=1&size=40",
+          "image": "",
+          "footer": "KSA Bot | made by _927#5562",
+          "timestamp": "BOOL_TRUE@@",
+          "savetovariable": "",
+          "savetovariabletype": "temp"
+        }
+      ]
+    },
+    {
+      "name": "unban",
+      "actions": [
+        {
+          "name": "checkPerms.unban",
+          "category": "User Action",
+          "type": "Check User Permissions",
+          "trueActions": [
+            {
+              "name": "unbanNow",
+              "category": "User Action",
+              "type": "Unban",
+              "id": "$$id$$"
+            },
+            {
+              "name": "unbanMsg",
+              "category": "Message",
+              "type": "Send Embed",
+              "channelname": "807333306970013766",
+              "color": "00FF08",
+              "title": "Erfolgreich!",
+              "url": "",
+              "authorname": "",
+              "authorimageurl": "",
+              "authorlink": "",
+              "description": "Der User wurde entbannt!",
+              "thumbnail": "https://cdn.discordapp.com/emojis/706539806573985802.gif?v=1&size=40",
+              "image": "",
+              "footer": "KSA Bot | made by _927#5562",
+              "timestamp": "false",
+              "savetovariable": "",
+              "savetovariabletype": "temp"
+            }
+          ],
+          "falseActions": [
+            {
+              "name": "noPerms_5_1_1",
+              "category": "Message",
+              "type": "Send Embed",
+              "channelname": "${dbsVars.CommandChannel.id}",
+              "color": "FF0000",
+              "title": "Keine Rechte",
+              "url": "",
+              "authorname": "",
+              "authorimageurl": "",
+              "authorlink": "",
+              "description": "Du hast nicht genug Rechte um diesen\nBefehl auszuführen",
+              "thumbnail": "https://cdn.discordapp.com/emojis/746426628871291020.png?v=1&size=40",
+              "image": "",
+              "footer": "",
+              "timestamp": "false",
+              "savetovariable": "",
+              "savetovariabletype": "temp"
+            }
+          ],
+          "user": "${dbsVars.CommandAuthor.id}",
+          "permissions": [
+            "BAN_MEMBERS"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "stalk",
+      "actions": [
+        {
+          "name": "getUser.stalk",
+          "category": "Variable",
+          "type": "Get Mentioned User",
+          "varname": "stalkeduser",
+          "vartype": "User",
+          "savevartype": "temp"
+        },
+        {
+          "name": "stalkedInfo",
+          "category": "Message",
+          "type": "Send Embed",
+          "channelname": "${dbsVars.CommandChannel.id}",
+          "color": "E224FF",
+          "title": "Stalked!",
+          "url": "",
+          "authorname": "",
+          "authorimageurl": "",
+          "authorlink": "",
+          "description": "**User:**<@${tempVars.stalkeduser.id}>\n**ID:** ${tempVars.stalkeduser.id}     \n**Tag:** ${tempVars.stalkeduser.user.tag}\n**Nickname:** ${tempVars.stalkeduser.nickname}\n**Last Message:** ${tempVars.stalkeduser.lastMessage}\n**Avatar URL:** \n${tempVars.stalkeduser.user.avatarURL}",
+          "thumbnail": "",
+          "image": "${tempVars.stalkeduser.user.avatarURL}",
+          "footer": "KSA Bot | made by _927#5562",
+          "timestamp": "false",
+          "savetovariable": "",
+          "savetovariabletype": "temp"
+        }
+      ]
+    },
+    {
+      "name": "lvl",
+      "actions": [
+        {
+          "name": "getXp",
+          "category": "User Data",
+          "type": "Get User Data",
+          "user": "${dbsVars.CommandAuthor.id}",
+          "field": "xp",
+          "varname": "xp",
+          "savevartype": "temp",
+          "vartype": "User"
+        },
+        {
+          "name": "getXp_1",
+          "category": "User Data",
+          "type": "Get User Data",
+          "user": "${dbsVars.CommandAuthor.id}",
+          "field": "lvl",
+          "varname": "lvl",
+          "savevartype": "temp",
+          "vartype": "User"
+        },
+        {
+          "name": "levelmsg",
+          "category": "Message",
+          "type": "Send Embed",
+          "channelname": "${dbsVars.CommandChannel.id}",
+          "color": "006EFF",
+          "title": "Dein Level...",
+          "url": "",
+          "authorname": "",
+          "authorimageurl": "",
+          "authorlink": "",
+          "description": "<@${dbsVars.CommandAuthor.id}>\n\n**XP** :${tempVars.xp}\n**LEVEL**: ${tempVars.lvl}",
+          "thumbnail": "https://cdn.discordapp.com/emojis/746427901515399351.gif?v=1&size=40",
+          "image": "",
+          "footer": "",
+          "timestamp": "false",
+          "savetovariable": "",
+          "savetovariabletype": "temp"
+        }
+      ]
+    },
+    {
+      "name": "addlvl",
+      "actions": []
+    },
+    {
+      "name": "addchannel",
+      "actions": [
+        {
+          "name": "checkPerms.addchannel",
+          "category": "User Action",
+          "type": "Check User Permissions",
+          "trueActions": [
+            {
+              "name": "getChannelName",
+              "category": "Variable",
+              "type": "Store Value in Variable",
+              "varname": "channelname",
+              "vartype": "Text",
+              "savevartype": "temp",
+              "param": "1+"
+            },
+            {
+              "name": "createChannel",
+              "category": "Channel Action",
+              "type": "Create Channel",
+              "channelname": "${tempVars.channelname}",
+              "reason": "",
+              "channeltype": "Voice",
+              "savetovariable": "",
+              "savetovariabletype": "temp"
+            },
+            {
+              "name": "addchannel.msg",
+              "category": "Message",
+              "type": "Send Embed",
+              "channelname": "${dbsVars.CommandChannel.id}",
+              "color": "00FF22",
+              "title": "Erfolgreich!",
+              "url": "",
+              "authorname": "",
+              "authorimageurl": "",
+              "authorlink": "",
+              "description": "${tempVars.channelname} wurde erfolgreich erstellt",
+              "thumbnail": "https://cdn.discordapp.com/emojis/712485245634740345.gif?v=1&size=40",
+              "image": "",
+              "footer": "",
+              "timestamp": "false",
+              "savetovariable": "",
+              "savetovariabletype": "temp"
+            }
+          ],
+          "falseActions": [
+            {
+              "name": "noPerms_5_1_1_1",
+              "category": "Message",
+              "type": "Send Embed",
+              "channelname": "${dbsVars.CommandChannel.id}",
+              "color": "FF0000",
+              "title": "Keine Rechte",
+              "url": "",
+              "authorname": "",
+              "authorimageurl": "",
+              "authorlink": "",
+              "description": "Du hast nicht genug Rechte um diesen\nBefehl auszuführen",
+              "thumbnail": "https://cdn.discordapp.com/emojis/746426628871291020.png?v=1&size=40",
+              "image": "",
+              "footer": "",
+              "timestamp": "false",
+              "savetovariable": "",
+              "savetovariabletype": "temp"
+            }
+          ],
+          "user": "${dbsVars.CommandAuthor.id}",
+          "permissions": [
+            "ADMINISTRATOR"
+          ]
+        }
+      ]
+    }
+  ]
+}

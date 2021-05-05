@@ -1,0 +1,422 @@
+{
+  "nodes": [
+    {
+      "type": "event",
+      "name": "User Joins Server",
+      "guid": "49ebbc23-2903-4f05-ab69-bc9ecb4f067e",
+      "variables": {
+        "user": "newuser"
+      },
+      "outputs": [
+        {
+          "label": "responses",
+          "connections": [
+            "4f175485-e3d9-4e97-827c-82c5c6cc1f7d"
+          ]
+        }
+      ],
+      "x": 87,
+      "y": 98,
+      "perms": []
+    },
+    {
+      "type": "event",
+      "name": "Any Message",
+      "guid": "49ebbc23-2903-4f05-ab69-bc9ecb4f8888",
+      "variables": {
+        "user": "msguser"
+      },
+      "outputs": [
+        {
+          "label": "responses",
+          "connections": [
+            "d2162916-b493-4057-b658-4711b100450a"
+          ]
+        }
+      ],
+      "x": 89,
+      "y": 234,
+      "perms": []
+    },
+    {
+      "type": "event",
+      "name": "User Kicked",
+      "guid": "69ebbc23-2903-4f05-ab69-bc9ecb4f067e",
+      "variables": {
+        "user": "kickuser"
+      },
+      "outputs": [
+        {
+          "label": "responses",
+          "connections": []
+        }
+      ],
+      "x": 207,
+      "y": 620,
+      "perms": []
+    },
+    {
+      "type": "event",
+      "name": "User Banned",
+      "guid": "77ebbc23-2003-4f05-ab69-bc9ecb4f067e",
+      "variables": {
+        "user": "banuser"
+      },
+      "outputs": [
+        {
+          "label": "responses",
+          "connections": []
+        }
+      ],
+      "x": 210,
+      "y": 699,
+      "perms": []
+    },
+    {
+      "type": "event",
+      "name": "Bot Initialization",
+      "guid": "0101bc23-2003-4f05-ab69-bc9ecb4f067e",
+      "variables": {},
+      "outputs": [
+        {
+          "label": "responses",
+          "connections": []
+        }
+      ],
+      "x": 53,
+      "y": 619,
+      "perms": []
+    },
+    {
+      "type": "response",
+      "name": "userJoined",
+      "guid": "4f175485-e3d9-4e97-827c-82c5c6cc1f7d",
+      "reactionFields": [],
+      "embedfields": [],
+      "outputs": [
+        {
+          "label": "next response",
+          "connections": [
+            "68ee8ce0-bc2b-45cd-9460-7b6ace2dac27"
+          ]
+        }
+      ],
+      "inputs": [
+        {
+          "label": "trigger",
+          "id": "49ebbc23-2903-4f05-ab69-bc9ecb4f067e"
+        }
+      ],
+      "x": 247,
+      "y": 99,
+      "rtype": "Message",
+      "rsubtype": "Send Embed",
+      "formdata": [
+        "807378980021469234",
+        "5900FF",
+        "Willkommen!",
+        "",
+        "",
+        "",
+        "",
+        "<@${tempVars.newuser.id}> ist beigetreten! Willkommen auf diesem Server und viel Spaß!",
+        "",
+        "https://cdn.discordapp.com/emojis/717241728704315472.png?v=1&size=40",
+        "",
+        "BOOL_TRUE@@",
+        "",
+        "temp"
+      ],
+      "formnames": [
+        "channelname",
+        "color",
+        "title",
+        "url",
+        "authorname",
+        "authorimageurl",
+        "authorlink",
+        "description",
+        "thumbnail",
+        "image",
+        "footer",
+        "timestamp",
+        "saveToVariable",
+        "saveToVariableType"
+      ]
+    },
+    {
+      "type": "response",
+      "name": "addRole",
+      "guid": "68ee8ce0-bc2b-45cd-9460-7b6ace2dac27",
+      "reactionFields": [],
+      "embedfields": [],
+      "outputs": [
+        {
+          "label": "next response",
+          "connections": []
+        }
+      ],
+      "inputs": [
+        {
+          "label": "trigger",
+          "id": "4f175485-e3d9-4e97-827c-82c5c6cc1f7d"
+        }
+      ],
+      "x": 407,
+      "y": 99,
+      "rtype": "User Action",
+      "rsubtype": "Add Role to User",
+      "formdata": [
+        "${tempVars.newuser.id}",
+        "Samurai"
+      ],
+      "formnames": [
+        "user",
+        "roleName"
+      ]
+    },
+    {
+      "type": "response",
+      "name": "addxp",
+      "guid": "d2162916-b493-4057-b658-4711b100450a",
+      "reactionFields": [],
+      "embedfields": [],
+      "outputs": [
+        {
+          "label": "next response",
+          "connections": [
+            "a5f66f15-c1af-4594-af9c-13de698b1b61"
+          ]
+        }
+      ],
+      "inputs": [
+        {
+          "label": "trigger",
+          "id": "49ebbc23-2903-4f05-ab69-bc9ecb4f8888"
+        }
+      ],
+      "x": 249,
+      "y": 232,
+      "rtype": "User Data",
+      "rsubtype": "Edit User Data",
+      "formdata": [
+        "${tempVars.msguser.id}",
+        "xp",
+        "+",
+        "1"
+      ],
+      "formnames": [
+        "user",
+        "field",
+        "oper",
+        "value"
+      ]
+    },
+    {
+      "type": "response",
+      "name": "checkLvl",
+      "guid": "a5f66f15-c1af-4594-af9c-13de698b1b61",
+      "reactionFields": [],
+      "embedfields": [],
+      "outputs": [
+        {
+          "label": "true",
+          "connections": [
+            "44e6298f-e26f-4757-9e19-aa6de050439a"
+          ]
+        },
+        {
+          "label": "false",
+          "connections": []
+        }
+      ],
+      "inputs": [
+        {
+          "label": "trigger",
+          "id": "d2162916-b493-4057-b658-4711b100450a"
+        }
+      ],
+      "x": 412,
+      "y": 229,
+      "rtype": "User Data",
+      "rsubtype": "Check User Data",
+      "formdata": [
+        "${tempVars.msguser.id}",
+        "xp",
+        "greater than",
+        "49"
+      ],
+      "formnames": [
+        "user",
+        "field",
+        "compare",
+        "value"
+      ]
+    },
+    {
+      "type": "response",
+      "name": "addxp_1",
+      "guid": "44e6298f-e26f-4757-9e19-aa6de050439a",
+      "embedfields": [],
+      "outputs": [
+        {
+          "label": "next response",
+          "connections": [
+            "5327eff4-c49a-456c-bc5b-08aa1330cb93"
+          ]
+        }
+      ],
+      "inputs": [
+        {
+          "label": "trigger",
+          "id": "a5f66f15-c1af-4594-af9c-13de698b1b61"
+        }
+      ],
+      "x": 575,
+      "y": 234,
+      "rtype": "User Data",
+      "rsubtype": "Edit User Data",
+      "formdata": [
+        "${tempVars.msguser.id}",
+        "xp",
+        "+",
+        "1"
+      ],
+      "formnames": [
+        "user",
+        "field",
+        "oper",
+        "value"
+      ]
+    },
+    {
+      "type": "response",
+      "name": "setxp0",
+      "guid": "5327eff4-c49a-456c-bc5b-08aa1330cb93",
+      "reactionFields": [],
+      "embedfields": [],
+      "outputs": [
+        {
+          "label": "next response",
+          "connections": [
+            "a4197e02-c262-48aa-bbbf-3a630974be11"
+          ]
+        }
+      ],
+      "inputs": [
+        {
+          "label": "trigger",
+          "id": "44e6298f-e26f-4757-9e19-aa6de050439a"
+        }
+      ],
+      "x": 93,
+      "y": 343,
+      "rtype": "User Data",
+      "rsubtype": "Set User Data",
+      "formdata": [
+        "${tempVars.msguser.id}",
+        "xp",
+        "0"
+      ],
+      "formnames": [
+        "user",
+        "field",
+        "fieldvalue"
+      ]
+    },
+    {
+      "type": "response",
+      "name": "level",
+      "guid": "a4197e02-c262-48aa-bbbf-3a630974be11",
+      "reactionFields": [],
+      "embedfields": [],
+      "saveToVariable": "",
+      "saveToVariableType": "temp",
+      "outputs": [
+        {
+          "label": "next response",
+          "connections": [
+            "5654cddf-9d57-46d6-87d5-790878cc9e3d"
+          ]
+        }
+      ],
+      "inputs": [
+        {
+          "label": "trigger",
+          "id": "5327eff4-c49a-456c-bc5b-08aa1330cb93"
+        }
+      ],
+      "x": 258,
+      "y": 345,
+      "rtype": "User Data",
+      "rsubtype": "Edit User Data",
+      "formdata": [
+        "${tempVars.msguser.id}",
+        "lvl",
+        "+",
+        "1"
+      ],
+      "formnames": [
+        "user",
+        "field",
+        "oper",
+        "value"
+      ]
+    },
+    {
+      "type": "response",
+      "name": "levelupmsg",
+      "guid": "5654cddf-9d57-46d6-87d5-790878cc9e3d",
+      "reactionFields": [],
+      "embedfields": [],
+      "outputs": [
+        {
+          "label": "next response",
+          "connections": []
+        }
+      ],
+      "inputs": [
+        {
+          "label": "trigger",
+          "id": "a4197e02-c262-48aa-bbbf-3a630974be11"
+        }
+      ],
+      "x": 422,
+      "y": 372,
+      "rtype": "Message",
+      "rsubtype": "Send Embed",
+      "formdata": [
+        "839232411158183956",
+        "00F7FF",
+        "Level Up!",
+        "",
+        "",
+        "",
+        "",
+        "<@${tempVars.msguser.id}>  ist nun ein Level höher!\nchecke dein Level mit !lvl",
+        "",
+        "https://cdn.discordapp.com/emojis/746427855336112201.gif?v=1&size=40",
+        "KSA Bot | made by _927#5562",
+        "false",
+        "",
+        "temp"
+      ],
+      "formnames": [
+        "channelname",
+        "color",
+        "title",
+        "url",
+        "authorname",
+        "authorimageurl",
+        "authorlink",
+        "description",
+        "thumbnail",
+        "image",
+        "footer",
+        "timestamp",
+        "saveToVariable",
+        "saveToVariableType"
+      ]
+    }
+  ]
+}

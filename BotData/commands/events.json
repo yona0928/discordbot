@@ -1,0 +1,136 @@
+{
+  "command": [
+    {
+      "name": "User Joins Server",
+      "perms": [],
+      "actions": [
+        {
+          "name": "userJoined",
+          "category": "Message",
+          "type": "Send Embed",
+          "channelname": "807378980021469234",
+          "color": "5900FF",
+          "title": "Willkommen!",
+          "url": "",
+          "authorname": "",
+          "authorimageurl": "",
+          "authorlink": "",
+          "description": "<@${tempVars.newuser.id}> ist beigetreten! Willkommen auf diesem Server und viel Spaß!",
+          "thumbnail": "",
+          "image": "https://cdn.discordapp.com/emojis/717241728704315472.png?v=1&size=40",
+          "footer": "",
+          "timestamp": "BOOL_TRUE@@",
+          "savetovariable": "",
+          "savetovariabletype": "temp"
+        },
+        {
+          "name": "addRole",
+          "category": "User Action",
+          "type": "Add Role to User",
+          "user": "${tempVars.newuser.id}",
+          "rolename": "Samurai"
+        }
+      ],
+      "var": {
+        "user": "newuser"
+      }
+    },
+    {
+      "name": "Any Message",
+      "perms": [],
+      "actions": [
+        {
+          "name": "addxp",
+          "category": "User Data",
+          "type": "Edit User Data",
+          "user": "${tempVars.msguser.id}",
+          "field": "xp",
+          "oper": "+",
+          "value": "1"
+        },
+        {
+          "name": "checkLvl",
+          "category": "User Data",
+          "type": "Check User Data",
+          "trueActions": [
+            {
+              "name": "addxp_1",
+              "category": "User Data",
+              "type": "Edit User Data",
+              "user": "${tempVars.msguser.id}",
+              "field": "xp",
+              "oper": "+",
+              "value": "1"
+            },
+            {
+              "name": "setxp0",
+              "category": "User Data",
+              "type": "Set User Data",
+              "user": "${tempVars.msguser.id}",
+              "field": "xp",
+              "fieldvalue": "0"
+            },
+            {
+              "name": "level",
+              "category": "User Data",
+              "type": "Edit User Data",
+              "user": "${tempVars.msguser.id}",
+              "field": "lvl",
+              "oper": "+",
+              "value": "1"
+            },
+            {
+              "name": "levelupmsg",
+              "category": "Message",
+              "type": "Send Embed",
+              "channelname": "839232411158183956",
+              "color": "00F7FF",
+              "title": "Level Up!",
+              "url": "",
+              "authorname": "",
+              "authorimageurl": "",
+              "authorlink": "",
+              "description": "<@${tempVars.msguser.id}>  ist nun ein Level höher!\nchecke dein Level mit !lvl",
+              "thumbnail": "",
+              "image": "https://cdn.discordapp.com/emojis/746427855336112201.gif?v=1&size=40",
+              "footer": "KSA Bot | made by _927#5562",
+              "timestamp": "false",
+              "savetovariable": "",
+              "savetovariabletype": "temp"
+            }
+          ],
+          "falseActions": [],
+          "user": "${tempVars.msguser.id}",
+          "field": "xp",
+          "compare": "greater than",
+          "value": "49"
+        }
+      ],
+      "var": {
+        "user": "msguser"
+      }
+    },
+    {
+      "name": "User Kicked",
+      "perms": [],
+      "actions": [],
+      "var": {
+        "user": "kickuser"
+      }
+    },
+    {
+      "name": "User Banned",
+      "perms": [],
+      "actions": [],
+      "var": {
+        "user": "banuser"
+      }
+    },
+    {
+      "name": "Bot Initialization",
+      "perms": [],
+      "actions": [],
+      "var": {}
+    }
+  ]
+}
